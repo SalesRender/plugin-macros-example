@@ -1,0 +1,44 @@
+PUT {{host}}/data/options/1
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "options": {
+    "format": [
+      "csv"
+    ]
+  }
+}
+
+###
+
+PUT {{host}}/data/options/1
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "options": {
+    "format": [
+      "csv2"
+    ]
+  }
+}
+
+###
+
+PUT {{host}}/data/options/2
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "options": {
+    "format": [
+      "csv2"
+    ]
+  }
+}
+
+###

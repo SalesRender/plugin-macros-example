@@ -1,0 +1,188 @@
+{
+    "info": [
+        {
+            "source": "PLUGIN_NAME",
+            "translated": ""
+        },
+        {
+            "source": "PLUGIN_DESCRIPTION",
+            "translated": ""
+        }
+    ],
+    "autocomplete": [
+        {
+            "source": "DYNAMIC_VALUE #{value}",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_FROM_TO ({min}-{max})",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_OVER ({max})",
+            "translated": ""
+        },
+        {
+            "source": "NO_GROUP",
+            "translated": ""
+        }
+    ],
+    "settings": [
+        {
+            "source": "SETTINGS_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "SETTINGS_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_1",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_2",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_3",
+            "translated": ""
+        },
+        {
+            "source": "GROUP_3_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "Value #{value}",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR {value}",
+            "translated": ""
+        },
+        {
+            "source": "BOOL_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "BOOL_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "BOOL_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "FLOAT_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "FLOAT_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "FLOAT_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "INTEGER_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "INTEGER_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "INTEGER_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NOT_STRING",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_TOO_SHORT",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_LOWERCASE_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_UPPERCASE_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_DIGIT_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "STRING_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "STRING_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "STRING_VALIDATION_INVALID_ARGUMENT",
+            "translated": ""
+        },
+        {
+            "source": "STRING_VALIDATION_TOO_LONG",
+            "translated": ""
+        },
+        {
+            "source": "MARKDOWN_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "MARKDOWN_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "MARKDOWN_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "FILE_TITLE",
+            "translated": ""
+        },
+        {
+            "source": "FILE_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "FILE_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_TITLE",
+            "translated": ""
+        }
+    ]
+}

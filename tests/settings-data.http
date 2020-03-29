@@ -1,0 +1,53 @@
+GET {{host}}/data/settings
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+###
+
+PUT {{host}}/data/settings
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "main": {
+    "headers": true,
+    "fields": [
+      "id",
+      "createdAt",
+      "updatedAt",
+      "orderData.UserFields.[field.name=approvedBy].value.email",
+      "id",
+      "cart.totalPrice"
+    ],
+    "format": [
+      "csv"
+    ]
+  }
+}
+
+###
+
+PUT {{host}}/data/settings
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "main": {
+    "headers": false,
+    "fields": [
+      "id",
+      "qwerty",
+      "createdAt",
+      "updatedAt",
+      "cart.totalPrice"
+    ],
+    "format": [
+      "xlsx", "xls"
+    ]
+  }
+}
+
+###

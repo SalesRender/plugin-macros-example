@@ -1,0 +1,25 @@
+{
+  "name": "leadvertex/plugin-macros-example",
+  "description": "Example plugin for developing UI at leadvertex.com",
+  "type": "project",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Timur Kasumov aka XAKEPEHOK",
+      "email": "support@leadvertex.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Leadvertex\\Plugin\\Instance\\Macros\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2.0",
+    "ext-curl": "*",
+    "xakepehok/array-graphql": "^0.0.1",
+    "leadvertex/plugin-core-macros": "^0.13.0",
+    "leadvertex/plugin-component-translations": "^0.1.1"
+  }
+}

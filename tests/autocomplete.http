@@ -1,0 +1,11 @@
+GET {{host}}/autocomplete/example?query=9
+
+###
+
+GET {{host}}/autocomplete/example?query[]=9&query[]=10
+
+###
+
+GET {{host}}/autocomplete/example?query[]=9&query[]=10&query[]=qwerty
+
+###

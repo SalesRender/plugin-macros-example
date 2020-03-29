@@ -1,0 +1,188 @@
+{
+    "info": [
+        {
+            "source": "PLUGIN_NAME",
+            "translated": "Демонстрационный плагин"
+        },
+        {
+            "source": "PLUGIN_DESCRIPTION",
+            "translated": "Данный плагин разработан **для тестирования frontend'a**"
+        }
+    ],
+    "autocomplete": [
+        {
+            "source": "DYNAMIC_VALUE #{value}",
+            "translated": "Динамическое значение #{value}"
+        },
+        {
+            "source": "GROUP_FROM_TO ({min}-{max})",
+            "translated": "От {min} до {max}"
+        },
+        {
+            "source": "GROUP_OVER ({max})",
+            "translated": "Свыше {max}"
+        },
+        {
+            "source": "NO_GROUP",
+            "translated": "Без группы"
+        }
+    ],
+    "settings": [
+        {
+            "source": "SETTINGS_TITLE",
+            "translated": "Настройки"
+        },
+        {
+            "source": "SETTINGS_DESCRIPTION",
+            "translated": "Этот текст опционален и его может не быть вовсе. Он содержит общее описание всех настроек во всех вкладках. Это **markdown**, и он поддердживает форматирование"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Группа настроек №1"
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": "Здесь пишется общее описание группы настроек. Тоже в **markdown**"
+        },
+        {
+            "source": "GROUP_2",
+            "translated": "Группа настроек №2"
+        },
+        {
+            "source": "GROUP_3",
+            "translated": "Группа настроек №3"
+        },
+        {
+            "source": "GROUP_3_DESCRIPTION",
+            "translated": "В этой группе нет полей. Такое тоже может быть. Такие формы могут выводить богатое markdown-описание, в том числе таблицы, в которых могут быть какие-либо данные и лишь одна кнопка"
+        },
+        {
+            "source": "Value #{value}",
+            "translated": "Значение #{value}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
+            "translated": "Некорректный тип значения"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}",
+            "translated": "Минимальное количество значений: {min}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}",
+            "translated": "Максимальное количество значений: {max}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR {value}",
+            "translated": "Некорректное значение '{value}'"
+        },
+        {
+            "source": "BOOL_TITLE",
+            "translated": "Поле с типом 'bool'"
+        },
+        {
+            "source": "BOOL_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "BOOL_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "FLOAT_TITLE",
+            "translated": "Поле с типом 'float'"
+        },
+        {
+            "source": "FLOAT_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "FLOAT_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "INTEGER_TITLE",
+            "translated": "Поле с типом 'integer'"
+        },
+        {
+            "source": "INTEGER_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "INTEGER_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_TITLE",
+            "translated": "Поле с типом 'password'"
+        },
+        {
+            "source": "PASSWORD_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NOT_STRING",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_TOO_SHORT",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_LOWERCASE_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_UPPERCASE_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "PASSWORD_VALIDATION_NO_DIGIT_CHARS",
+            "translated": ""
+        },
+        {
+            "source": "STRING_TITLE",
+            "translated": "Поле с типом 'string'"
+        },
+        {
+            "source": "STRING_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "STRING_VALIDATION_INVALID_ARGUMENT",
+            "translated": ""
+        },
+        {
+            "source": "STRING_VALIDATION_TOO_LONG",
+            "translated": ""
+        },
+        {
+            "source": "MARKDOWN_TITLE",
+            "translated": "Поле с типом 'markdown'"
+        },
+        {
+            "source": "MARKDOWN_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "MARKDOWN_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "FILE_TITLE",
+            "translated": "Поле с типом 'file'"
+        },
+        {
+            "source": "FILE_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "FILE_VALIDATION_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "LIST_OF_ENUM_TITLE",
+            "translated": "Поле с типом 'listOfEnum'"
+        }
+    ]
+}
