@@ -22,7 +22,7 @@ foreach ($router->getRoutes() as $route) {
     if ($route->getPattern() == "/registration") {
         $route->setCallable(function (Request $request, Response $response) {
             $parser = new Parser();
-            $token = $parser->parse($this->request->getParsedBodyParam('registration'));
+            $token = $parser->parse($request->getParsedBodyParam('registration'));
             $token->getClaim('companyId');
             Connector::setCompanyId($token->getClaim('companyId'));
 
