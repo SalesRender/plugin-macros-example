@@ -61,6 +61,10 @@
             "translated": ""
         },
         {
+            "source": "From {min} to {max}",
+            "translated": ""
+        },
+        {
             "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
             "translated": ""
         },
