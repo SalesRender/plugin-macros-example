@@ -57,6 +57,10 @@
             "translated": ""
         },
         {
+            "source": "SETTINGS_BUTTON",
+            "translated": ""
+        },
+        {
             "source": "Value #{value}",
             "translated": ""
         },

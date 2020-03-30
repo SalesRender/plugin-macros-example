@@ -19,7 +19,7 @@
     "php": ">=7.2.0",
     "ext-curl": "*",
     "xakepehok/array-graphql": "^0.0.1",
-    "leadvertex/plugin-core-macros": "^0.13.0",
+    "leadvertex/plugin-core-macros": "^0.14.0",
     "leadvertex/plugin-component-translations": "^0.1.1"
   }
 }

@@ -54,7 +54,11 @@ class SettingsForm extends Form
                     Translator::get('settings', 'GROUP_3_DESCRIPTION'),
                     []
                 ),
-            ]
+            ],
+            Translator::get(
+                'settings',
+                'SETTINGS_BUTTON'
+            )
         );
     }
 
