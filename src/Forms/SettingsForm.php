@@ -60,22 +60,22 @@ class SettingsForm extends Form
 
     protected function getFieldsArray($withDefault = true): array
     {
-        $staticValues = [];
+        $values = [];
         for ($i = 1; $i <= 10; $i++) {
             $values["static_{$i}"] = [
                 'title' => Translator::get('settings', 'Value #{value}', ['value' => $i]),
-                'group' => 'From 1 to 10'
+                'group' => Translator::get('settings', 'From {min} to {max}', ['min' => 1, 'max' => 10]),
             ];
         }
 
         for ($i = 11; $i <= 20; $i++) {
             $values["static_{$i}"] = [
                 'title' => Translator::get('settings', 'Value #{value}', ['value' => $i]),
-                'group' => 'From 11 to 20'
+                'group' => Translator::get('settings', 'From {min} to {max}', ['min' => 11, 'max' => 20]),
             ];
         }
 
-        $staticValues = new StaticValues($staticValues);
+        $staticValues = new StaticValues($values);
         $staticValidator = function ($values, ListOfEnumDefinition $definition, Form $form) {
             $limit = $definition->getLimit();
 
