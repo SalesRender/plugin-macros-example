@@ -16,6 +16,10 @@ class Example implements AutocompleteInterface
 
     public function query(string $query): array
     {
+        if (trim($query) === '') {
+            $query = 1;
+        }
+
         $values = [];
         if (preg_match('~^\d+$~', $query)) {
 
