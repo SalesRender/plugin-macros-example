@@ -27,7 +27,7 @@ class Example implements AutocompleteInterface
             for ($i = 1; $i < 10; $i++) {
 
                 $values["dynamic_{$i}{$query}"] = [
-                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => $query]),
+                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => "{$i}{$query}"]),
                     'group' => $this->getGroup($i . $query)
                 ];
             }
