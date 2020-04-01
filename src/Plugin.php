@@ -46,7 +46,7 @@ class Plugin extends MacrosPlugin
      */
     public static function getDefaultLanguage(): string
     {
-        return 'en_US';
+        return 'ru_RU';
     }
 
     /**
