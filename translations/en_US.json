@@ -34,7 +34,7 @@
         },
         {
             "source": "OPTIONS_DESCRIPTION",
-            "translated": "You can change this parameters in these options:\n- Choose quantity of orders with errors in processing\n- Choose quantity of orders to skip\n- Set delay in each order processing\n- Initialize process with null-count of orders\n- Choose the process result: Uri/Success/Error"
+            "translated": "You can change this parameters in these options:\n- Choose quantity of orders with errors in processing\n- Choose quantity of orders to skip\n- Set delay in each order processing\n- Initialize process with null-count of orders\n- Choose the process result: Uri\/Success\/Error"
         },
         {
             "source": "GROUP_1",
@@ -139,7 +139,7 @@
     ],
     "orders_to_process_options": [
         {
-            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount}",
+            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
             "translated": "Overall count of orders to process - {ordersCount}.\n{ordersTable}"
         },
         {
