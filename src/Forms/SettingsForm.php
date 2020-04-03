@@ -22,6 +22,7 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
+use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
 
 class SettingsForm extends Form
@@ -53,7 +54,7 @@ class SettingsForm extends Form
                     Translator::get('settings', 'GROUP_3'),
                     Translator::get('settings', 'GROUP_3_DESCRIPTION'),
                     []
-                ),
+                )
             ],
             Translator::get(
                 'settings',
@@ -80,46 +81,46 @@ class SettingsForm extends Form
         }
 
         $staticValues = new StaticValues($values);
-        $staticValidator = function ($values, ListOfEnumDefinition $definition, Form $form) {
-            $limit = $definition->getLimit();
+        $staticValidator = function ($values, ListOfEnumDefinition $definition, FormData $form) {
+        $limit = $definition->getLimit();
 
-            $errors = [];
+        $errors = [];
 
-            if (!is_null($values) && !is_array($values)) {
-                $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT');
-                return $errors;
-            }
-
-            if ($limit) {
-
-                if ($limit->getMin() && count($values) < $limit->getMin()) {
-                    $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}', ['min' => $limit->getMin()]);
-                }
-
-                if ($limit->getMax() && count($values) > $limit->getMax()) {
-                    $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}', ['max' => $limit->getMax()]);
-                }
-            }
-
-            $possibleValues = [];
-            for ($i = 1; $i <= 20; $i++) {
-                $possibleValues[] = 'static_' . $i;
-            }
-
-            foreach ($values as $value) {
-                if (!in_array($value, $possibleValues)) {
-                    $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR {value}');
-                }
-            }
-
+        if (!is_null($values) && !is_array($values)) {
+            $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT');
             return $errors;
-        };
+        }
+
+        if ($limit) {
+
+            if ($limit->getMin() && count($values) < $limit->getMin()) {
+                $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}', ['min' => $limit->getMin()]);
+            }
+
+            if ($limit->getMax() && count($values) > $limit->getMax()) {
+                $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}', ['max' => $limit->getMax()]);
+            }
+        }
+
+        $possibleValues = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $possibleValues[] = 'static_' . $i;
+        }
+
+        foreach ($values as $value) {
+            if (!in_array($value, $possibleValues)) {
+                $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR {value}');
+            }
+        }
+
+        return $errors;
+    };
 
         return [
             'bool_field' => new BooleanDefinition(
                 Translator::get('settings', 'BOOL_TITLE'),
                 Translator::get('settings', 'BOOL_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
                     if (!is_bool($value)) {
                         $errors[] = Translator::get('settings', 'BOOL_VALIDATION_ERROR');
@@ -131,7 +132,7 @@ class SettingsForm extends Form
             'float_field' => new FloatDefinition(
                 Translator::get('settings', 'FLOAT_TITLE'),
                 Translator::get('settings', 'FLOAT_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
                     if (!is_numeric($value)) {
                         $errors[] = Translator::get('settings', 'FLOAT_VALIDATION_ERROR');
@@ -143,7 +144,7 @@ class SettingsForm extends Form
             'integer_field' => new IntegerDefinition(
                 Translator::get('settings', 'INTEGER_TITLE'),
                 Translator::get('settings', 'INTEGER_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
                     if (!is_int($value)) {
                         $errors[] = Translator::get('settings', 'INTEGER_VALIDATION_ERROR');
@@ -155,7 +156,7 @@ class SettingsForm extends Form
             'password_field' => new PasswordDefinition(
                 Translator::get('settings', 'PASSWORD_TITLE'),
                 Translator::get('settings', 'PASSWORD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
 
                     if (!is_scalar($value)) {
@@ -185,7 +186,7 @@ class SettingsForm extends Form
             'string_field' => new StringDefinition(
                 Translator::get('settings', 'STRING_TITLE'),
                 Translator::get('settings', 'STRING_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
 
                     if (!is_scalar($value)) {
@@ -203,7 +204,7 @@ class SettingsForm extends Form
             'markdwn_field' => new MarkdownDefinition(
                 Translator::get('settings', 'MARKDOWN_TITLE'),
                 Translator::get('settings', 'MARKDOWN_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
                     if (!is_string($value)) {
                         $errors[] = Translator::get('settings', 'MARKDOWN_VALIDATION_ERROR');
@@ -215,7 +216,7 @@ class SettingsForm extends Form
             'file_field' => new FileDefinition(
                 Translator::get('settings', 'FILE_TITLE'),
                 Translator::get('settings', 'FILE_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, Form $form) {
+                function ($value, FieldDefinition $definition, FormData $form) {
                     $errors = [];
 
                     $ch = curl_init((string) $value);
@@ -234,7 +235,7 @@ class SettingsForm extends Form
             'listOfEnum_field_dynamic' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
                 Translator::get('settings', 'FILE_DESCRIPTION'),
-                function ($values, FieldDefinition $definition, Form $form) {
+                function ($values, FieldDefinition $definition, FormData $form) {
                     $errors = [];
 
                     if (!is_null($values) && !is_array($values)) {

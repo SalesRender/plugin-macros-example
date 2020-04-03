@@ -13,7 +13,24 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/options/1
+PUT {{host}}/data/options/1?filters={"ids": [3]}&sort={"field": "id"}
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "response_options": {
+    "errors": 5,
+    "skipped": 3,
+    "delay": 0,
+    "nullCount": false,
+    "response": ["static_success"]
+  }
+}
+
+###
+
+PUT {{host}}/data/options/2
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
