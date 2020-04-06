@@ -54,7 +54,7 @@ class SettingsForm extends Form
                     Translator::get('settings', 'GROUP_3'),
                     Translator::get('settings', 'GROUP_3_DESCRIPTION'),
                     []
-                )
+                ),
             ],
             Translator::get(
                 'settings',
