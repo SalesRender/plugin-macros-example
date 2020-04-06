@@ -13,17 +13,17 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/options/1?filters={"ids": [3]}&sort={"field": "id"}
+PUT {{host}}/data/options/1?filters={"ids": [3, 4, 5, 6]}&sort={"field": "id"}
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
 
 {
   "response_options": {
-    "errors": 5,
-    "skipped": 3,
+    "errors": 9,
+    "skipped": 0,
     "delay": 0,
-    "nullCount": false,
+    "nullCount": true,
     "response": ["static_success"]
   }
 }

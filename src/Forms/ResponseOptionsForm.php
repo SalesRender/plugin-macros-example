@@ -14,68 +14,29 @@ use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
 use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Macros\Models\Session;
-use Leadvertex\Plugin\Instance\Macros\Plugin;
+use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
 
-class OptionsForm extends Form
+class ResponseOptionsForm extends Form
 {
-    public function __construct(int $number)
-    {
-        switch ($number) {
-            case 1: {
-                parent::__construct(
-                    Translator::get('response_options', 'OPTIONS_TITLE'),
-                    Translator::get('response_options', 'OPTIONS_DESCRIPTION'),
-                    [
-                        'response_options' => new FieldGroup(
-                            Translator::get('response_options', 'GROUP_1'),
-                            Translator::get('response_options', 'GROUP_1_DESCRIPTION'),
-                            $this->getResponseOptionsFields()
-                        )
-                    ],
-                    Translator::get(
-                        'response_options',
-                        'OPTIONS_BUTTON'
-                    )
-                );
-            }
-            case 2: {
-                $options = Session::current()->getOptions(1);
-                if (!$options->isEmpty()) {
-                    if (!$options->get('response_options.nullCount', 'true')) {
-                        $queryResult = Plugin::getOrdersWithFsp(Session::current()->getFsp());
-                        if ($queryResult['success']) {
-                            $groupDescription = Translator::get('orders_to_process_options', 'GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}', ['allOrders' => count($queryResult['data']), 'ordersTable' => $this->generateMarkdownTableForOrdersIds($queryResult['data'])]);
-                        } else {
-                            $groupDescription = Translator::get('orders_to_process_options', 'GROUP_1_QUERY_ERROR_DESCRIPTION {errors}', ['errors' => json_encode($queryResult['errors'])]);
-                        }
-                    } else {
-                        $groupDescription = Translator::get('orders_to_process_options', 'GROUP_1_NO_ORDERS_DESCRIPTION');
-                    }
-                } else {
-                    $groupDescription = Translator::get('orders_to_process_options', 'GROUP_1_NO_ORDERS_DESCRIPTION');
-                }
+    use OptionsSingletonTrait;
 
-                parent::__construct(
-                    Translator::get('orders_to_process_options', 'OPTIONS_TITLE'),
-                    Translator::get('orders_to_process_options', 'OPTIONS_DESCRIPTION'),
-                    [
-                        'orders_to_process_options' => new FieldGroup(
-                            Translator::get('orders_to_process_options', 'GROUP_1'),
-                            $groupDescription,
-                            []
-                        )
-                    ],
-                    Translator::get(
-                        'orders_to_process_options',
-                        'OPTIONS_BUTTON'
-                    )
-                );
-            }
-            default: {
-                return null;
-            }
-        }
+    public function __construct()
+    {
+        parent::__construct(
+            Translator::get('response_options', 'OPTIONS_TITLE'),
+            Translator::get('response_options', 'OPTIONS_DESCRIPTION'),
+            [
+                'response_options' => new FieldGroup(
+                    Translator::get('response_options', 'GROUP_1'),
+                    Translator::get('response_options', 'GROUP_1_DESCRIPTION'),
+                    $this->getResponseOptionsFields()
+                )
+            ],
+            Translator::get(
+                'response_options',
+                'OPTIONS_BUTTON'
+            )
+        );
     }
 
     public function getResponseOptionsFields($withDefault = true): array
@@ -191,23 +152,5 @@ class OptionsForm extends Form
                 $withDefault ? ['static_success'] : null
             )
         ];
-    }
-
-    private function generateMarkdownTableForOrdersIds(array $orders): string
-    {
-        $tableContent = '';
-        $tableHeader = <<<MARKDOWN
-|Orders ids|Status name|
-|---|---|
-
-MARKDOWN;
-        foreach ($orders as $order) {
-            $tableContent .= <<<MARKDOWN
-|{$order['id']}|{$order['status']['name']}|
-
-MARKDOWN;
-        }
-        $tableContent = substr($tableContent, 0, -2);
-        return $tableHeader . $tableContent;
     }
 }

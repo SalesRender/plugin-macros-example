@@ -22,7 +22,8 @@ use Leadvertex\Plugin\Core\Macros\Components\AutocompleteInterface;
 use Leadvertex\Plugin\Core\Macros\MacrosPlugin;
 use Leadvertex\Plugin\Core\Macros\Models\Session;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
-use Leadvertex\Plugin\Instance\Macros\Forms\OptionsForm;
+use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
+use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
 
 class Plugin extends MacrosPlugin
@@ -106,7 +107,16 @@ class Plugin extends MacrosPlugin
      */
     public function getRunForm(int $number): ?Form
     {
-        return new OptionsForm($number);
+        switch ($number) {
+            case 1:
+                return ResponseOptionsForm::getInstance();
+                break;
+            case 2:
+                return PreviewOptionsForm::getInstance();
+                break;
+            default:
+                return null;
+        }
     }
 
     /**
@@ -128,7 +138,7 @@ class Plugin extends MacrosPlugin
         $session = Session::current();
         $responseOptions = $session->getOptions(1)->get('response_options');
 
-        Session::current()->getToken()->getPluginToken();
+        $session->getToken()->getPluginToken();
 
         if ($responseOptions['nullCount']) {
             $process->initialize(null);
@@ -136,6 +146,7 @@ class Plugin extends MacrosPlugin
             $queryResult = self::getOrdersWithFsp($session->getFsp());
             if ($queryResult['success']) {
                 $process->initialize((count($queryResult['data'])));
+                $orderIds = array_map(function ($order) { return $order['id']; }, $queryResult['data']);
             } else {
                 $process->initialize(null);
                 $process->terminate(new Error('Bad GraphQL request. Errors: ' . json_encode($queryResult['errors'])));
@@ -144,9 +155,17 @@ class Plugin extends MacrosPlugin
             }
         }
 
-        for ($i = 1; $i <= $responseOptions['errors']; $i++) {
-            $process->addError(new Error('Test error'));
-            sleep($responseOptions['delay']);
+        if (isset($orderIds)) {
+            for ($i = 1; $i <= $responseOptions['errors']; $i++) {
+                $id = array_shift($orderIds);
+                (($i % 2) == 0) ? $process->addError(new Error('Test error', $id)) : $process->addError(new Error('Test error'));
+                sleep($responseOptions['delay']);
+            }
+        } else {
+            for ($i = 1; $i <= $responseOptions['errors']; $i++) {
+                (($i % 2) == 0) ? $process->addError(new Error('Test error', $i)) : $process->addError(new Error('Test error'));
+                sleep($responseOptions['delay']);
+            }
         }
 
         for ($i = 1; $i <= $responseOptions['skipped']; $i++) {
@@ -165,7 +184,7 @@ class Plugin extends MacrosPlugin
 
         switch ($responseOptions['response'][0]) {
             case 'static_url': {
-                $processResult = 'http://test.uri.com/';
+                $processResult = 'http://example.com';
                 break;
             }
             case 'static_success': {
