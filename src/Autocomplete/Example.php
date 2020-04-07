@@ -16,6 +16,10 @@ class Example implements AutocompleteInterface
 
     public function query(string $query): array
     {
+        if (trim($query) === '') {
+            $query = 1;
+        }
+
         $values = [];
         if (preg_match('~^\d+$~', $query)) {
 
@@ -27,7 +31,7 @@ class Example implements AutocompleteInterface
             for ($i = 1; $i < 10; $i++) {
 
                 $values["dynamic_{$i}{$query}"] = [
-                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => $query]),
+                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => "{$i}{$query}"]),
                     'group' => $this->getGroup($i . $query)
                 ];
             }
