@@ -204,7 +204,8 @@ class Plugin extends MacrosPlugin
 
     static public function getOrdersWithFsp(ApiFilterSortPaginate $fsp): array
     {
-        $api = new ApiClient($_ENV['LV_API_ENDPOINT'], $_ENV['LV_API_TOKEN']);
+        $session = Session::current();
+        $api = $session->getApiClient();
 
         $variables['query'] = '$pagination: Pagination!';
         $variables['fetcher'] = 'pagination: $pagination';

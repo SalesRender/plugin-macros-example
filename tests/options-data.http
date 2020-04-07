@@ -13,7 +13,7 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/options/1?filters={"ids": [3, 4, 5, 6]}&sort={"field": "id"}
+PUT {{host}}/data/options/1?filters={"ids": []}&sort={"field": "id"}
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
@@ -23,7 +23,7 @@ X-PLUGIN-TOKEN: {{token}}
     "errors": 9,
     "skipped": 0,
     "delay": 0,
-    "nullCount": true,
+    "nullCount": false,
     "response": ["static_success"]
   }
 }
