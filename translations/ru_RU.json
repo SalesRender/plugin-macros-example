@@ -230,11 +230,11 @@
         },
         {
             "source": "BOOL_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает значение 'bool'"
         },
         {
             "source": "BOOL_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Переданное значение не имеет тип 'bool'"
         },
         {
             "source": "FLOAT_TITLE",
@@ -242,11 +242,11 @@
         },
         {
             "source": "FLOAT_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает значение 'float'"
         },
         {
             "source": "FLOAT_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Переданное значение не имеет тип 'float'"
         },
         {
             "source": "INTEGER_TITLE",
@@ -254,11 +254,11 @@
         },
         {
             "source": "INTEGER_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает значение 'integer'"
         },
         {
             "source": "INTEGER_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Переданное значение не имеет тип 'integer'"
         },
         {
             "source": "PASSWORD_TITLE",
@@ -266,19 +266,19 @@
         },
         {
             "source": "PASSWORD_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает строковое значение и валидируется по заданным правилам."
         },
         {
             "source": "PASSWORD_VALIDATION_NOT_STRING",
-            "translated": ""
+            "translated": "Переданное значение не имеет тип 'string'"
         },
         {
             "source": "PASSWORD_VALIDATION_TOO_SHORT",
-            "translated": ""
+            "translated": "Пароль слишком короткий"
         },
         {
             "source": "PASSWORD_VALIDATION_NO_LOWERCASE_CHARS",
-            "translated": ""
+            "translated": "Пароль должен содержать как минимум один символ в нижнем регистре"
         },
         {
             "source": "PASSWORD_VALIDATION_NO_UPPERCASE_CHARS",
@@ -294,7 +294,7 @@
         },
         {
             "source": "STRING_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает значение 'string'"
         },
         {
             "source": "STRING_VALIDATION_INVALID_ARGUMENT",
@@ -310,11 +310,11 @@
         },
         {
             "source": "MARKDOWN_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает значение 'string'. Поддерживает разметку 'markdown'"
         },
         {
             "source": "MARKDOWN_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Переданное значение не имеет тип 'string'"
         },
         {
             "source": "FILE_TITLE",
@@ -322,7 +322,7 @@
         },
         {
             "source": "FILE_DESCRIPTION",
-            "translated": ""
+            "translated": "Поле, которое принимает ссылку на файл"
         },
         {
             "source": "FILE_VALIDATION_ERROR",

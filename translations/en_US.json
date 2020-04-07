@@ -230,23 +230,23 @@
         },
         {
             "source": "BOOL_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'bool' value"
         },
         {
             "source": "BOOL_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Passed value is not a 'bool' type"
         },
         {
             "source": "FLOAT_TITLE",
-            "translated": "Field with  'float' type"
+            "translated": "Field with 'float' type"
         },
         {
             "source": "FLOAT_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'float' value"
         },
         {
             "source": "FLOAT_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Passed value is not a 'float' type"
         },
         {
             "source": "INTEGER_TITLE",
@@ -254,11 +254,11 @@
         },
         {
             "source": "INTEGER_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'integer' value"
         },
         {
             "source": "INTEGER_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Passed value is not a 'integer' type"
         },
         {
             "source": "PASSWORD_TITLE",
@@ -266,19 +266,19 @@
         },
         {
             "source": "PASSWORD_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'string' and validates according to password rules."
         },
         {
             "source": "PASSWORD_VALIDATION_NOT_STRING",
-            "translated": ""
+            "translated": "Passed value is not a 'string' type"
         },
         {
             "source": "PASSWORD_VALIDATION_TOO_SHORT",
-            "translated": ""
+            "translated": "Password is too short"
         },
         {
             "source": "PASSWORD_VALIDATION_NO_LOWERCASE_CHARS",
-            "translated": ""
+            "translated": "Password must contain at least one symbol in lowercase"
         },
         {
             "source": "PASSWORD_VALIDATION_NO_UPPERCASE_CHARS",
@@ -294,7 +294,7 @@
         },
         {
             "source": "STRING_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'string' value"
         },
         {
             "source": "STRING_VALIDATION_INVALID_ARGUMENT",
@@ -310,11 +310,11 @@
         },
         {
             "source": "MARKDOWN_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a 'string' value. Supports a 'markdown' markup"
         },
         {
             "source": "MARKDOWN_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "Passed value is not a 'string' type"
         },
         {
             "source": "FILE_TITLE",
@@ -322,7 +322,7 @@
         },
         {
             "source": "FILE_DESCRIPTION",
-            "translated": ""
+            "translated": "Field, that accepts a uri to a file"
         },
         {
             "source": "FILE_VALIDATION_ERROR",
