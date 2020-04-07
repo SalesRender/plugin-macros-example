@@ -2,91 +2,231 @@
     "info": [
         {
             "source": "PLUGIN_NAME",
-            "translated": ""
+            "translated": "Demonstration plugin"
         },
         {
             "source": "PLUGIN_DESCRIPTION",
-            "translated": ""
+            "translated": "This plugin developed **for frontend testing**"
         }
     ],
     "autocomplete": [
         {
             "source": "DYNAMIC_VALUE #{value}",
-            "translated": ""
+            "translated": "Dynamic value #{value}"
         },
         {
             "source": "GROUP_FROM_TO ({min}-{max})",
-            "translated": ""
+            "translated": "From {min} to {max}"
         },
         {
             "source": "GROUP_OVER ({max})",
-            "translated": ""
+            "translated": "Over {max}"
         },
         {
             "source": "NO_GROUP",
-            "translated": ""
+            "translated": "No group"
+        }
+    ],
+    "response_options": [
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Response options"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "You can change this parameters in these options:\n- Choose quantity of orders with errors in processing\n- Choose quantity of orders to skip\n- Set delay in each order processing\n- Initialize process with null-count of orders\n- Choose the process result: Uri\/Success\/Error"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Options group №1"
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": "Here is a general description of options group. Also with **markdown**"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Submit"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
+            "translated": "Invalid value type"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}",
+            "translated": "Minimum quantity of values: {min}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}",
+            "translated": "Maximum quantity of values: {max}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR {value}",
+            "translated": "Invalid value '{value}'"
+        },
+        {
+            "source": "SET_RESPONSE_SUCCESS_VALUE_TITLE",
+            "translated": "Return 'Success' as the process result"
+        },
+        {
+            "source": "Only {limit}",
+            "translated": "You can choose only {limit}"
+        },
+        {
+            "source": "SET_RESPONSE_URL_VALUE_TITLE",
+            "translated": "Return 'Uri' as the process result"
+        },
+        {
+            "source": "SET_RESPONSE_ERROR_VALUE_TITLE",
+            "translated": "Return 'Error' as the process result"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_TITLE",
+            "translated": "Errors"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_DESCRIPTION",
+            "translated": "Returns specified number of errors in process"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_VALIDATION_ERROR",
+            "translated": "Value must be a number >= 0"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_TITLE",
+            "translated": "Skips"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_DESCRIPTION",
+            "translated": "Returns specified number of skips in process"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_VALIDATION_ERROR",
+            "translated": "Value must be a number >= 0"
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_TITLE",
+            "translated": "Delay"
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_DESCRIPTION",
+            "translated": "Sets specified delay (in seconds) after each order processing."
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_VALIDATION_ERROR",
+            "translated": "Value must be a number >= 0"
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_FIELD_TITLE",
+            "translated": "Don't specify orders count"
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_FIELD_DESCRIPTION",
+            "translated": "Initializes process with `null` orders count. This means that you can't get count of orders to process."
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_VALIDATION_ERROR",
+            "translated": "Value should be true or false"
+        },
+        {
+            "source": "SET_RESPONSE_TITLE",
+            "translated": "Result"
+        },
+        {
+            "source": "SET_RESPONSE_DESCRIPTION",
+            "translated": "Sets the process result as Uri(static_uri), Success(static_success) or Error(static_error)."
+        }
+    ],
+    "orders_to_process_options": [
+        {
+            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
+            "translated": "Overall count of orders to process - {ordersCount}.\n{ordersTable}"
+        },
+        {
+            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
+            "translated": "An errors encountered while orders processing.\nServer's response:\n{errors}"
+        },
+        {
+            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
+            "translated": "Cannot search orders. Options have not yet been submitted."
+        },
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Preview"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Preview of orders to process"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Group without fields"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Ok"
         }
     ],
     "settings": [
         {
             "source": "SETTINGS_TITLE",
-            "translated": ""
+            "translated": "Settings"
         },
         {
             "source": "SETTINGS_DESCRIPTION",
-            "translated": ""
+            "translated": "This text is optional, and may not be here at all. It contains overall description of settings for all tabs. This is **markdown**, and it supports formatting."
         },
         {
             "source": "GROUP_1",
-            "translated": ""
+            "translated": "Settings group №1"
         },
         {
             "source": "GROUP_1_DESCRIPTION",
-            "translated": ""
+            "translated": "Here is a general description of settings group. Also with **markdown**"
         },
         {
             "source": "GROUP_2",
-            "translated": ""
+            "translated": "Settings group №2"
         },
         {
             "source": "GROUP_3",
-            "translated": ""
+            "translated": "Settings group №3"
         },
         {
             "source": "GROUP_3_DESCRIPTION",
-            "translated": ""
+            "translated": "This group has no fields. It could be like that too. This forms can display detailed markdown-description, including tables, which can contain some data and have only 1 button."
         },
         {
             "source": "SETTINGS_BUTTON",
-            "translated": ""
+            "translated": "Save changes"
         },
         {
             "source": "Value #{value}",
-            "translated": ""
+            "translated": "Value #{value}"
         },
         {
             "source": "From {min} to {max}",
-            "translated": ""
+            "translated": "From {min} to {max}"
         },
         {
             "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
-            "translated": ""
+            "translated": "Invalid value type"
         },
         {
             "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}",
-            "translated": ""
+            "translated": "Minimum number of values: {min}"
         },
         {
             "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}",
-            "translated": ""
+            "translated": "Maximum number of values: {max}"
         },
         {
             "source": "LIST_OF_ENUM_VALIDATION_ERROR {value}",
-            "translated": ""
+            "translated": "Invalid value '{value}'"
         },
         {
             "source": "BOOL_TITLE",
-            "translated": ""
+            "translated": "Field with 'bool' type"
         },
         {
             "source": "BOOL_DESCRIPTION",
@@ -98,7 +238,7 @@
         },
         {
             "source": "FLOAT_TITLE",
-            "translated": ""
+            "translated": "Field with  'float' type"
         },
         {
             "source": "FLOAT_DESCRIPTION",
@@ -110,7 +250,7 @@
         },
         {
             "source": "INTEGER_TITLE",
-            "translated": ""
+            "translated": "Field with 'integer' type"
         },
         {
             "source": "INTEGER_DESCRIPTION",
@@ -122,7 +262,7 @@
         },
         {
             "source": "PASSWORD_TITLE",
-            "translated": ""
+            "translated": "Field with 'password' type"
         },
         {
             "source": "PASSWORD_DESCRIPTION",
@@ -142,15 +282,15 @@
         },
         {
             "source": "PASSWORD_VALIDATION_NO_UPPERCASE_CHARS",
-            "translated": ""
+            "translated": "Password must contain at least one symbol in uppercase"
         },
         {
             "source": "PASSWORD_VALIDATION_NO_DIGIT_CHARS",
-            "translated": ""
+            "translated": "Password must contain at least one number"
         },
         {
             "source": "STRING_TITLE",
-            "translated": ""
+            "translated": "Field with 'string' type"
         },
         {
             "source": "STRING_DESCRIPTION",
@@ -158,15 +298,15 @@
         },
         {
             "source": "STRING_VALIDATION_INVALID_ARGUMENT",
-            "translated": ""
+            "translated": "Invalid value type"
         },
         {
             "source": "STRING_VALIDATION_TOO_LONG",
-            "translated": ""
+            "translated": "Too long string"
         },
         {
             "source": "MARKDOWN_TITLE",
-            "translated": ""
+            "translated": "Field with 'markdown' type"
         },
         {
             "source": "MARKDOWN_DESCRIPTION",
@@ -178,7 +318,7 @@
         },
         {
             "source": "FILE_TITLE",
-            "translated": ""
+            "translated": "Field with 'file' type"
         },
         {
             "source": "FILE_DESCRIPTION",
@@ -186,11 +326,11 @@
         },
         {
             "source": "FILE_VALIDATION_ERROR",
-            "translated": ""
+            "translated": "File is not available"
         },
         {
             "source": "LIST_OF_ENUM_TITLE",
-            "translated": ""
+            "translated": "Field with 'listOfEnum' type"
         }
     ]
 }

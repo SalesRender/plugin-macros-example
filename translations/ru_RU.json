@@ -27,6 +27,146 @@
             "translated": "Без группы"
         }
     ],
+    "response_options": [
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Настройки ответа"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Настройки ответа от сервера. Можно измменить следующие параметры:\n- Выбрать количество заказов, которые будут обработаны с ошибкой\n- Выбрать количество заказов, которые должны быть пропущены (skipped)\n- Установить задержку между обработкой заказов\n- Возможность запуска процесса без заранее известного количества обрабатываемых заказов (чтобы проверить кейс, как-будто мы импортируем данные и не знаем сколько их будет)\n- Выбрать результат выполнения: ссылка\/успешно\/ошибка"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Группа параметров №1"
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": "Основные параметры"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Отправить"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT",
+            "translated": "Некорректный тип значения"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}",
+            "translated": "Минимальное количество значений: {min}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR_MIN {max}",
+            "translated": "Максимальное количество значений: {max}"
+        },
+        {
+            "source": "LIST_OF_ENUM_VALIDATION_ERROR {value}",
+            "translated": "Некорректное значение '{value}'"
+        },
+        {
+            "source": "SET_RESPONSE_SUCCESS_VALUE_TITLE",
+            "translated": "Вернуть 'Успешно' в качестве результата"
+        },
+        {
+            "source": "Only {limit}",
+            "translated": "Можно выбрать только {limit}"
+        },
+        {
+            "source": "SET_RESPONSE_URL_VALUE_TITLE",
+            "translated": "Вернуть 'Ссылка' в качестве результата"
+        },
+        {
+            "source": "SET_RESPONSE_ERROR_VALUE_TITLE",
+            "translated": "Вернуть 'Ошибка' в качестве результата"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_TITLE",
+            "translated": "Ошибки"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_DESCRIPTION",
+            "translated": "Возвращает указанное число ошибок при обработке заказа в ответе"
+        },
+        {
+            "source": "SET_ERRORS_COUNT_FIELD_VALIDATION_ERROR",
+            "translated": "Значение должно быть числом >= 0"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_TITLE",
+            "translated": "Пропуски"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_DESCRIPTION",
+            "translated": "Возвращает указанное число пропусков при обработке заказа в ответе"
+        },
+        {
+            "source": "SET_SKIPPED_COUNT_FIELD_VALIDATION_ERROR",
+            "translated": "Значение должно быть числом >= 0"
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_TITLE",
+            "translated": "Задержка"
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_DESCRIPTION",
+            "translated": "Устанавливает указанную задержку (в секундах) после обработки каждого заказа."
+        },
+        {
+            "source": "SET_PROCESSING_DELAY_FIELD_VALIDATION_ERROR",
+            "translated": "Значение должно быть числом >= 0"
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_FIELD_TITLE",
+            "translated": "Не указывать количество заказов"
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_FIELD_DESCRIPTION",
+            "translated": "Инициализирует процесс с `null` количеством заказов. Это значит, что заранее количество заказов для обработки неизвестно."
+        },
+        {
+            "source": "SET_NULL_ORDER_COUNT_VALIDATION_ERROR",
+            "translated": "Значение должно быть true или false"
+        },
+        {
+            "source": "SET_RESPONSE_TITLE",
+            "translated": "Результат"
+        },
+        {
+            "source": "SET_RESPONSE_DESCRIPTION",
+            "translated": "Устанавливает результат как один из предложенных вариантов - ссылка(static_uri), успех(static_success) или ошибка(static_error)."
+        }
+    ],
+    "orders_to_process_options": [
+        {
+            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
+            "translated": "Общее количество заказов для обработки - {ordersCount}.\n{ordersTable}"
+        },
+        {
+            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
+            "translated": "При попытке расчета общего количества обрабатываемых заказов произошла ошибка\n Ответ сервера:\n{errors}"
+        },
+        {
+            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
+            "translated": "Невозможно найти заказы. Параметры еще не были переданы."
+        },
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Превью"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Превью заказов для обработки"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Группа без полей"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Ок"
+        }
+    ],
     "settings": [
         {
             "source": "SETTINGS_TITLE",
