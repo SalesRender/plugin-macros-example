@@ -8,7 +8,6 @@
 namespace Leadvertex\Plugin\Instance\Macros;
 
 
-use Leadvertex\Plugin\Components\ApiClient\ApiClient;
 use Leadvertex\Plugin\Components\ApiClient\ApiFilterSortPaginate;
 use Leadvertex\Plugin\Components\Developer\Developer;
 use Leadvertex\Plugin\Components\Form\Form;
@@ -19,13 +18,13 @@ use Leadvertex\Plugin\Components\Purpose\PluginEntity;
 use Leadvertex\Plugin\Components\Purpose\PluginPurpose;
 use Leadvertex\Plugin\Components\Translations\Translator;
 use Leadvertex\Plugin\Core\Macros\Components\AutocompleteInterface;
+use Leadvertex\Plugin\Core\Macros\Helpers\PathHelper;
 use Leadvertex\Plugin\Core\Macros\MacrosPlugin;
 use Leadvertex\Plugin\Core\Macros\Models\Session;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
-use XAKEPEHOK\Path\Path;
 
 class Plugin extends MacrosPlugin
 {
@@ -65,7 +64,7 @@ class Plugin extends MacrosPlugin
      */
     public static function getDescription(): string
     {
-        return Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents((new Path(__DIR__))->up()->down('markdown.md'));
+        return Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents(PathHelper::getRoot()->down('markdown.md'));
     }
 
     /**
