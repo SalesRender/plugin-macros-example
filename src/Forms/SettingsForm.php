@@ -24,6 +24,7 @@ use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
 use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
+use XAKEPEHOK\Path\Path;
 
 class SettingsForm extends Form
 {
@@ -52,7 +53,7 @@ class SettingsForm extends Form
                 ),
                 'group_3' => new FieldGroup(
                     Translator::get('settings', 'GROUP_3'),
-                    Translator::get('settings', 'GROUP_3_DESCRIPTION'),
+                    Translator::get('settings', 'GROUP_3_DESCRIPTION'). "\n" . file_get_contents((new Path(__DIR__))->up()->up()->down('markdown.md')),
                     []
                 ),
             ],

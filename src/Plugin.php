@@ -25,6 +25,7 @@ use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
+use XAKEPEHOK\Path\Path;
 
 class Plugin extends MacrosPlugin
 {
@@ -64,7 +65,7 @@ class Plugin extends MacrosPlugin
      */
     public static function getDescription(): string
     {
-        return Translator::get('info', 'PLUGIN_DESCRIPTION');
+        return Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents((new Path(__DIR__))->up()->down('markdown.md'));
     }
 
     /**
