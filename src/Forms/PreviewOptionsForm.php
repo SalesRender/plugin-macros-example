@@ -26,7 +26,7 @@ class PreviewOptionsForm extends Form
                         'orders_to_process_options',
                         'GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}',
                         [
-                            'allOrders' => count($queryResult['data']),
+                            'ordersCount' => count($queryResult['data']),
                             'ordersTable' => $this->generateMarkdownTableForOrdersIds($queryResult['data'])
                         ]
                     );
