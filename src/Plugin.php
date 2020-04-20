@@ -142,10 +142,12 @@ class Plugin extends MacrosPlugin
 
         if ($responseOptions['nullCount']) {
             $process->initialize(null);
+            $process->save();
         } else {
             $queryResult = self::getOrdersWithFsp($session->getFsp());
             if ($queryResult['success']) {
                 $process->initialize((count($queryResult['data'])));
+                $process->save();
                 $orderIds = array_map(function ($order) { return $order['id']; }, $queryResult['data']);
             } else {
                 $process->initialize(null);
@@ -160,17 +162,20 @@ class Plugin extends MacrosPlugin
                 $id = array_shift($orderIds);
                 (($i % 2) == 0) ? $process->addError(new Error('Test error', $id)) : $process->addError(new Error('Test error'));
                 sleep($responseOptions['delay']);
+                $process->save();
             }
         } else {
             for ($i = 1; $i <= $responseOptions['errors']; $i++) {
                 (($i % 2) == 0) ? $process->addError(new Error('Test error', $i)) : $process->addError(new Error('Test error'));
                 sleep($responseOptions['delay']);
+                $process->save();
             }
         }
 
         for ($i = 1; $i <= $responseOptions['skipped']; $i++) {
             $process->skip();
             sleep($responseOptions['delay']);
+            $process->save();
         }
 
         if (!is_null($process->initialized)) {
@@ -178,6 +183,7 @@ class Plugin extends MacrosPlugin
                 for ($i = 1; $i <= $process->initialized - ($responseOptions['errors'] + $responseOptions['skipped']); $i++) {
                     $process->handle();
                     sleep($responseOptions['delay']);
+                    $process->save();
                 }
             }
         }
