@@ -63,7 +63,7 @@ class ResponseOptionsForm extends Form
             }
 
             $possibleValues = [
-                'static_url',
+                'static_uri',
                 'static_success',
                 'static_error'
             ];
