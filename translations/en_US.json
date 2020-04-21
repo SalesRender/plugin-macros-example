@@ -27,6 +27,36 @@
             "translated": "No group"
         }
     ],
+    "orders_to_process_options": [
+        {
+            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
+            "translated": "Overall count of orders to process - {ordersCount}.\n{ordersTable}"
+        },
+        {
+            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
+            "translated": "An errors encountered while orders processing.\nServer's response:\n{errors}"
+        },
+        {
+            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
+            "translated": "Cannot search orders. Options have not yet been submitted."
+        },
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Preview"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Preview of orders to process"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Group without fields"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Ok"
+        }
+    ],
     "response_options": [
         {
             "source": "OPTIONS_TITLE",
@@ -79,6 +109,14 @@
         {
             "source": "SET_RESPONSE_ERROR_VALUE_TITLE",
             "translated": "Return 'Error' as the process result"
+        },
+        {
+            "source": "SET_PROCESS_DESCRIPTION",
+            "translated": "Process description"
+        },
+        {
+            "source": "SET_PROCESS_DESCRIPTION_ERROR",
+            "translated": "Process description should be a string"
         },
         {
             "source": "SET_ERRORS_COUNT_FIELD_TITLE",
@@ -135,36 +173,6 @@
         {
             "source": "SET_RESPONSE_DESCRIPTION",
             "translated": "Sets the process result as Uri(static_uri), Success(static_success) or Error(static_error)."
-        }
-    ],
-    "orders_to_process_options": [
-        {
-            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
-            "translated": "Overall count of orders to process - {ordersCount}.\n{ordersTable}"
-        },
-        {
-            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
-            "translated": "An errors encountered while orders processing.\nServer's response:\n{errors}"
-        },
-        {
-            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
-            "translated": "Cannot search orders. Options have not yet been submitted."
-        },
-        {
-            "source": "OPTIONS_TITLE",
-            "translated": "Preview"
-        },
-        {
-            "source": "OPTIONS_DESCRIPTION",
-            "translated": "Preview of orders to process"
-        },
-        {
-            "source": "GROUP_1",
-            "translated": "Group without fields"
-        },
-        {
-            "source": "OPTIONS_BUTTON",
-            "translated": "Ok"
         }
     ],
     "settings": [

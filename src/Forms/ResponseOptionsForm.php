@@ -10,6 +10,7 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Limit;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\StaticValues;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
+use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
 use Leadvertex\Plugin\Components\Form\FormData;
@@ -95,6 +96,18 @@ class ResponseOptionsForm extends Form
         $setResponseValues = new StaticValues($setResponseValues);
 
         return [
+            'description' => new StringDefinition(
+                Translator::get('response_options', 'SET_PROCESS_DESCRIPTION'),
+                null,
+                function ($value) {
+                    $errors = [];
+                    if (!is_string($value)) {
+                        $errors[] = Translator::get('response_options', 'SET_PROCESS_DESCRIPTION_ERROR');
+                    }
+                    return $errors;
+                },
+                ''
+            ),
             'errors' => new IntegerDefinition(
                 Translator::get('response_options', 'SET_ERRORS_COUNT_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_ERRORS_COUNT_FIELD_DESCRIPTION'),

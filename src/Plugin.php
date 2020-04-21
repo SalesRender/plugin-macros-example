@@ -138,6 +138,9 @@ class Plugin extends MacrosPlugin
         $session = Session::current();
         $responseOptions = $session->getOptions(1)->get('response_options');
 
+        $description = empty($responseOptions['description']) ? null : $responseOptions['description'];
+        $process->setDescription($description);
+
         $session->getToken()->getPluginToken();
 
         if ($responseOptions['nullCount']) {

@@ -27,6 +27,36 @@
             "translated": "Без группы"
         }
     ],
+    "orders_to_process_options": [
+        {
+            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
+            "translated": "Общее количество заказов для обработки - {ordersCount}.\n{ordersTable}"
+        },
+        {
+            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
+            "translated": "При попытке расчета общего количества обрабатываемых заказов произошла ошибка\n Ответ сервера:\n{errors}"
+        },
+        {
+            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
+            "translated": "Невозможно найти заказы. Параметры еще не были переданы."
+        },
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Превью"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Превью заказов для обработки"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Группа без полей"
+        },
+        {
+            "source": "OPTIONS_BUTTON",
+            "translated": "Ок"
+        }
+    ],
     "response_options": [
         {
             "source": "OPTIONS_TITLE",
@@ -79,6 +109,14 @@
         {
             "source": "SET_RESPONSE_ERROR_VALUE_TITLE",
             "translated": "Вернуть 'Ошибка' в качестве результата"
+        },
+        {
+            "source": "SET_PROCESS_DESCRIPTION",
+            "translated": "Описание процесса"
+        },
+        {
+            "source": "SET_PROCESS_DESCRIPTION_ERROR",
+            "translated": "Описание процесса должно быть строкой"
         },
         {
             "source": "SET_ERRORS_COUNT_FIELD_TITLE",
@@ -135,36 +173,6 @@
         {
             "source": "SET_RESPONSE_DESCRIPTION",
             "translated": "Устанавливает результат как один из предложенных вариантов - ссылка(static_uri), успех(static_success) или ошибка(static_error)."
-        }
-    ],
-    "orders_to_process_options": [
-        {
-            "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
-            "translated": "Общее количество заказов для обработки - {ordersCount}.\n{ordersTable}"
-        },
-        {
-            "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
-            "translated": "При попытке расчета общего количества обрабатываемых заказов произошла ошибка\n Ответ сервера:\n{errors}"
-        },
-        {
-            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
-            "translated": "Невозможно найти заказы. Параметры еще не были переданы."
-        },
-        {
-            "source": "OPTIONS_TITLE",
-            "translated": "Превью"
-        },
-        {
-            "source": "OPTIONS_DESCRIPTION",
-            "translated": "Превью заказов для обработки"
-        },
-        {
-            "source": "GROUP_1",
-            "translated": "Группа без полей"
-        },
-        {
-            "source": "OPTIONS_BUTTON",
-            "translated": "Ок"
         }
     ],
     "settings": [
