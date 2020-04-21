@@ -189,7 +189,7 @@ class Plugin extends MacrosPlugin
         }
 
         switch ($responseOptions['response'][0]) {
-            case 'static_url': {
+            case 'static_uri': {
                 $processResult = 'http://example.com';
                 break;
             }
