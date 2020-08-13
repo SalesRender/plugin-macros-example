@@ -339,6 +339,10 @@
         {
             "source": "LIST_OF_ENUM_TITLE",
             "translated": "Field with 'listOfEnum' type"
+        },
+        {
+            "source": "LIST_OF_ENUM_DESCRIPTION",
+            "translated": "Field, that accepts a set of values"
         }
     ]
 }

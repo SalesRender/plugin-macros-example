@@ -92,9 +92,13 @@ class SettingsForm extends Form
                 return $errors;
             }
 
+            if (is_null($values)) {
+                $values = [];
+            }
+
             if ($limit) {
 
-                if ($limit->getMin() && count($values) < $limit->getMin()) {
+                if ($limit->getMin() && (count($values) < $limit->getMin())) {
                     $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_ERROR_MIN {min}', ['min' => $limit->getMin()]);
                 }
 
@@ -235,13 +239,17 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_dynamic' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 function ($values, FieldDefinition $definition, FormData $form) {
                     $errors = [];
 
                     if (!is_null($values) && !is_array($values)) {
                         $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT');
                         return $errors;
+                    }
+
+                    if (is_null($values)) {
+                        $values = [];
                     }
 
                     foreach ($values as $value) {
@@ -257,7 +265,7 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_static' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 $staticValidator,
                 $staticValues,
                 null,
@@ -265,7 +273,7 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_static_min_only' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 $staticValidator,
                 $staticValues,
                 new Limit(2, null),
@@ -273,7 +281,7 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_static_max_only' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 $staticValidator,
                 $staticValues,
                 new Limit(null, 5),
@@ -281,7 +289,7 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_static_min_and_max' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 $staticValidator,
                 $staticValues,
                 new Limit(2, 5),
@@ -289,7 +297,7 @@ class SettingsForm extends Form
             ),
             'listOfEnum_field_static_one' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
-                Translator::get('settings', 'FILE_DESCRIPTION'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
                 $staticValidator,
                 $staticValues,
                 new Limit(1, 1),

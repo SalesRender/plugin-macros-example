@@ -339,6 +339,10 @@
         {
             "source": "LIST_OF_ENUM_TITLE",
             "translated": "Поле с типом 'listOfEnum'"
+        },
+        {
+            "source": "LIST_OF_ENUM_DESCRIPTION",
+            "translated": "Поле, которое принимает набор значений"
         }
     ]
 }

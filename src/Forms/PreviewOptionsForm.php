@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
@@ -69,19 +68,13 @@ class PreviewOptionsForm extends Form
 
     private function generateMarkdownTableForOrdersIds(array $orders): string
     {
+        $tableHeader = "|Orders ids|Status name|\n|---|---|\n";
+
         $tableContent = '';
-        $tableHeader = <<<MARKDOWN
-|Orders ids|Status name|
-|---|---|
-
-MARKDOWN;
         foreach ($orders as $order) {
-            $tableContent .= <<<MARKDOWN
-|{$order['id']}|{$order['status']['name']}|
-
-MARKDOWN;
+            $tableContent .= "|{$order['id']}|{$order['status']['name']}|\n";
         }
-        $tableContent = substr($tableContent, 0, -2);
+
         return $tableHeader . $tableContent;
     }
 }

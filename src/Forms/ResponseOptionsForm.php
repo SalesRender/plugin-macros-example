@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
@@ -50,6 +49,10 @@ class ResponseOptionsForm extends Form
             if (!is_null($values) && !is_array($values)) {
                 $errors[] = Translator::get('response_options', 'LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT');
                 return $errors;
+            }
+
+            if (is_null($values)) {
+                $values = [];
             }
 
             if ($limit) {

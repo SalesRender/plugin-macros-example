@@ -110,10 +110,8 @@ class Plugin extends MacrosPlugin
         switch ($number) {
             case 1:
                 return ResponseOptionsForm::getInstance();
-                break;
             case 2:
                 return PreviewOptionsForm::getInstance();
-                break;
             default:
                 return null;
         }
@@ -236,13 +234,11 @@ class Plugin extends MacrosPlugin
 
         $query = <<<QUERY
 query ({$variables['query']}){
-  company {
-    ordersFetcher({$variables['fetcher']}) {
-      orders {
-        id
-        status {
-          name
-        }
+  ordersFetcher({$variables['fetcher']}) {
+    orders {
+      id
+      status {
+        name
       }
     }
   }
@@ -253,6 +249,10 @@ QUERY;
         if ($result->hasErrors()) {
             return ['success' => false, 'errors' => $result->getErrors()];
         }
-        return ['success' => true, 'data' => $result->getData()['company']['ordersFetcher']['orders']];
+
+        return [
+            'success' => true,
+            'data' => $result->getData()['ordersFetcher']['orders']
+        ];
     }
 }
