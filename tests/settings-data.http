@@ -11,43 +11,60 @@ Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
 
 {
-  "main": {
-    "headers": true,
+  "group_1": {
+    "fields": [
+      "id",
+      "createdAt",
+      "data.addressFields.[field.name=address_one].value.city",
+      "updatedAt",
+      "data.addressFields.[field.name=address_one].value.region",
+      "cart.total",
+      "data.phoneFields.[field.name=phone].value.raw",
+      "data.phoneFields.[field.name=phone].value.country"
+    ]
+  },
+  "group_2": {
     "fields": [
       "id",
       "createdAt",
       "updatedAt",
-      "orderData.UserFields.[field.name=approvedBy].value.email",
-      "id",
-      "cart.totalPrice"
+      "data.addressFields.[field.name=address_one].value.city",
+      "data.addressFields.[field.name=address_one].value.region",
+      "cart.total"
     ],
-    "format": [
-      "csv"
-    ]
+    "listOfEnum_field_static_one": ["static_1"],
+    "listOfEnum_field_static_min_and_max": [
+      "static_1",
+      "static_2",
+      "static_3",
+      "static_13",
+      "static_14"
+    ],
+    "listOfEnum_field_static_max_only": [
+      "static_1",
+      "static_2",
+      "static_3",
+      "static_12",
+      "static_14"
+    ],
+    "listOfEnum_field_static_min_only": [
+      "static_1",
+      "static_14"
+    ],
+    "listOfEnum_field_static": [
+      "static_1",
+      "static_2",
+      "static_3",
+      "static_12",
+      "static_13",
+      "static_14"
+    ],
+    "file_field": "https://leadvertex.ru/img/logo.png",
+    "markdown_field": "Text with `markdown`",
+    "string_field": "New string",
+    "password_field": "VeRy_StrOnG_Pass_123",
+    "integer_field": 26,
+    "float_field": 25.99,
+    "bool_field": false
   }
 }
-
-###
-
-PUT {{host}}/data/settings
-Content-Type: application/json
-Accept-Language: ru_RU
-X-PLUGIN-TOKEN: {{token}}
-
-{
-  "main": {
-    "headers": false,
-    "fields": [
-      "id",
-      "qwerty",
-      "createdAt",
-      "updatedAt",
-      "cart.totalPrice"
-    ],
-    "format": [
-      "xlsx", "xls"
-    ]
-  }
-}
-
-###

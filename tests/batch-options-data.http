@@ -1,13 +1,21 @@
-GET {{host}}/forms/options/1
+PUT {{host}}/data/batch/1
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
+
+{
+  "response_options": {
+    "delay": 15,
+    "nullCount": false
+  }
+}
 
 ###
 
-GET {{host}}/forms/options/2
+PUT {{host}}/data/batch/2
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
+
 
 ###
