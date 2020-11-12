@@ -11,6 +11,10 @@
     ],
     "autocomplete": [
         {
+            "source": "DYNAMIC_VALUE #{value}0",
+            "translated": "Динамическое значение #{value}0"
+        },
+        {
             "source": "DYNAMIC_VALUE #{value}",
             "translated": "Динамическое значение #{value}"
         },
@@ -27,6 +31,312 @@
             "translated": "Без группы"
         }
     ],
+    "fields": [
+        {
+            "source": "Проект (ID)",
+            "translated": "Проект (ID)"
+        },
+        {
+            "source": "Проект (название)",
+            "translated": "Проект (название)"
+        },
+        {
+            "source": "Статус (ID)",
+            "translated": "Статус (ID)"
+        },
+        {
+            "source": "Статус (название)",
+            "translated": "Статус (название)"
+        },
+        {
+            "source": "Статус (группа)",
+            "translated": "Статус (группа)"
+        },
+        {
+            "source": "Дата создания",
+            "translated": "Дата создания"
+        },
+        {
+            "source": "Дата изменения",
+            "translated": "Дата изменения"
+        },
+        {
+            "source": "Дата отмены",
+            "translated": "Дата отмены"
+        },
+        {
+            "source": "Дата подтверждения",
+            "translated": "Дата подтверждения"
+        },
+        {
+            "source": "Дата отправки",
+            "translated": "Дата отправки"
+        },
+        {
+            "source": "Дата доставки",
+            "translated": "Дата доставки"
+        },
+        {
+            "source": "Дата неудачной доставки",
+            "translated": "Дата неудачной доставки"
+        },
+        {
+            "source": "Дата возврата",
+            "translated": "Дата возврата"
+        },
+        {
+            "source": "Склад (ID)",
+            "translated": "Склад (ID)"
+        },
+        {
+            "source": "Склад (название)",
+            "translated": "Склад (название)"
+        },
+        {
+            "source": "Налог (сумма)",
+            "translated": "Налог (сумма)"
+        },
+        {
+            "source": "Налог (процент)",
+            "translated": "Налог (процент)"
+        },
+        {
+            "source": "Налог (включает доставку)",
+            "translated": "Налог (включает доставку)"
+        },
+        {
+            "source": "Lead (ID вебмастера)",
+            "translated": "ID вебмастера"
+        },
+        {
+            "source": "Lead (email вебмастера)",
+            "translated": "Почта вебмастера"
+        },
+        {
+            "source": "Lead (ID оффера)",
+            "translated": "ID оффера"
+        },
+        {
+            "source": "Lead (метод вознаграждения)",
+            "translated": "Метод вознаграждения"
+        },
+        {
+            "source": "Lead (тип ставки)",
+            "translated": "Тип ставки"
+        },
+        {
+            "source": "Lead (ставка)",
+            "translated": "Ставка"
+        },
+        {
+            "source": "Lead (валюта)",
+            "translated": "Валюта"
+        },
+        {
+            "source": "Lead (сумма вознаграждение)",
+            "translated": "Сумма вознаграждения"
+        },
+        {
+            "source": "Lead (валюта вознаграждение)",
+            "translated": "Валюта вознаграждения"
+        },
+        {
+            "source": "Lead (статус)",
+            "translated": "Статус"
+        },
+        {
+            "source": "Lead (холд до)",
+            "translated": "Удерживать"
+        },
+        {
+            "source": "Lead (завершен)",
+            "translated": "Завершен"
+        },
+        {
+            "source": "Источник (uri)",
+            "translated": "Источник (uri)"
+        },
+        {
+            "source": "Источник (referer)",
+            "translated": "Источник (referer)"
+        },
+        {
+            "source": "Источник (IP)",
+            "translated": "Источник (IP)"
+        },
+        {
+            "source": "Источник (utm_source)",
+            "translated": "Источник (utm_source)"
+        },
+        {
+            "source": "Источник (utm_medium)",
+            "translated": "Источник (utm_medium)"
+        },
+        {
+            "source": "Источник (utm_campaign)",
+            "translated": "Источник (utm_campaign)"
+        },
+        {
+            "source": "Источник (utm_content)",
+            "translated": "Источник (utm_content)"
+        },
+        {
+            "source": "Источник (utm_term)",
+            "translated": "Источник (utm_term)"
+        },
+        {
+            "source": "Источник (subid_1)",
+            "translated": "Источник (subid_1)"
+        },
+        {
+            "source": "Источник (subid_2)",
+            "translated": "Источник (subid_2)"
+        },
+        {
+            "source": "Системные",
+            "translated": "Системные"
+        },
+        {
+            "source": "Корзина (сумма)",
+            "translated": "Корзина (сумма)"
+        },
+        {
+            "source": "Корзина",
+            "translated": "Корзина"
+        },
+        {
+            "source": "Логический (да\/нет)",
+            "translated": "Логический (да/нет)"
+        },
+        {
+            "source": "Дата и время",
+            "translated": "Дата и время"
+        },
+        {
+            "source": "Списки",
+            "translated": "Списки"
+        },
+        {
+            "source": "Email",
+            "translated": "Почта"
+        },
+        {
+            "source": "{label} (дублей)",
+            "translated": "{label} (дублей)"
+        },
+        {
+            "source": "Файлы",
+            "translated": "Файлы"
+        },
+        {
+            "source": "{label} (исходное имя файла)",
+            "translated": "{label} (исходное имя файла)"
+        },
+        {
+            "source": "{label} (размер в байтах)",
+            "translated": "{label} (размер в байтах)"
+        },
+        {
+            "source": "{label} (ссылка)",
+            "translated": "{label} (ссылка)"
+        },
+        {
+            "source": "Дробные числа",
+            "translated": "Дробные числа"
+        },
+        {
+            "source": "Изображения",
+            "translated": "Изображения"
+        },
+        {
+            "source": "{label} (большой размер)",
+            "translated": "{label} (большой размер)"
+        },
+        {
+            "source": "{label} (средний размер)",
+            "translated": "{label} (средний размер)"
+        },
+        {
+            "source": "{label} (маленький размер)",
+            "translated": "{label} (маленький размер)"
+        },
+        {
+            "source": "Целые числа",
+            "translated": "Целые числа"
+        },
+        {
+            "source": "Телефоны",
+            "translated": "Телефоны"
+        },
+        {
+            "source": "{label} (исходный)",
+            "translated": "{label} (исходный)"
+        },
+        {
+            "source": "{label} (международный)",
+            "translated": "{label} (международный)"
+        },
+        {
+            "source": "{label} (локальный)",
+            "translated": "{label} (локальный)"
+        },
+        {
+            "source": "{label} (код страны)",
+            "translated": "{label} (код страны)"
+        },
+        {
+            "source": "Строки",
+            "translated": "Строки"
+        },
+        {
+            "source": "Адреса",
+            "translated": "Адреса"
+        },
+        {
+            "source": "{label} (почтовый индекс)",
+            "translated": "{label} (почтовый индекс)"
+        },
+        {
+            "source": "{label} (регион)",
+            "translated": "{label} (регион)"
+        },
+        {
+            "source": "{label} (город)",
+            "translated": "{label} (город)"
+        },
+        {
+            "source": "{label} (адрес 1)",
+            "translated": "{label} (адрес 1)"
+        },
+        {
+            "source": "{label} (адрес 2)",
+            "translated": "{label} (адрес 2)"
+        },
+        {
+            "source": "Ф.И.О",
+            "translated": "Ф.И.О"
+        },
+        {
+            "source": "{label} (имя)",
+            "translated": "{label} (имя)"
+        },
+        {
+            "source": "{label} (фамилия)",
+            "translated": "{label} (фамилия)"
+        },
+        {
+            "source": "Пользователи",
+            "translated": "Пользователи"
+        },
+        {
+            "source": "{label} (ID)",
+            "translated": "{label} (ID)"
+        },
+        {
+            "source": "{label} (email)",
+            "translated": "{label} (почта)"
+        }
+    ],
     "orders_to_process_options": [
         {
             "source": "GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}",
@@ -35,10 +345,6 @@
         {
             "source": "GROUP_1_QUERY_ERROR_DESCRIPTION {errors}",
             "translated": "При попытке расчета общего количества обрабатываемых заказов произошла ошибка\n Ответ сервера:\n{errors}"
-        },
-        {
-            "source": "GROUP_1_NO_ORDERS_DESCRIPTION",
-            "translated": "Невозможно найти заказы. Параметры еще не были переданы."
         },
         {
             "source": "OPTIONS_TITLE",
@@ -233,6 +539,14 @@
             "translated": "Некорректное значение '{value}'"
         },
         {
+            "source": "Столбцы",
+            "translated": "Столбцы"
+        },
+        {
+            "source": "Выберите данные, которые вы хотите выгружать",
+            "translated": "Выберите данные, которые вы хотите выгрузить"
+        },
+        {
             "source": "BOOL_TITLE",
             "translated": "Поле с типом 'bool'"
         },
@@ -242,7 +556,11 @@
         },
         {
             "source": "BOOL_VALIDATION_ERROR",
-            "translated": "Переданное значение не имеет тип 'bool'"
+            "translated": "Тип, переданного значения, должен быть 'bool'"
+        },
+        {
+            "source": "NULL_ERROR",
+            "translated": "Пустое значение"
         },
         {
             "source": "FLOAT_TITLE",
@@ -254,7 +572,7 @@
         },
         {
             "source": "FLOAT_VALIDATION_ERROR",
-            "translated": "Переданное значение не имеет тип 'float'"
+            "translated": "Тип, переданного значения, должен быть 'float'"
         },
         {
             "source": "INTEGER_TITLE",
@@ -266,7 +584,7 @@
         },
         {
             "source": "INTEGER_VALIDATION_ERROR",
-            "translated": "Переданное значение не имеет тип 'integer'"
+            "translated": "Тип, переданного значения, должен быть 'integer'"
         },
         {
             "source": "PASSWORD_TITLE",
@@ -278,7 +596,7 @@
         },
         {
             "source": "PASSWORD_VALIDATION_NOT_STRING",
-            "translated": "Переданное значение не имеет тип 'string'"
+            "translated": "Тип, переданного значения, должен быть 'string'"
         },
         {
             "source": "PASSWORD_VALIDATION_TOO_SHORT",
@@ -322,7 +640,7 @@
         },
         {
             "source": "MARKDOWN_VALIDATION_ERROR",
-            "translated": "Переданное значение не имеет тип 'string'"
+            "translated": "Тип, переданного значения, должен быть 'string'"
         },
         {
             "source": "FILE_TITLE",
@@ -343,6 +661,20 @@
         {
             "source": "LIST_OF_ENUM_DESCRIPTION",
             "translated": "Поле, которое принимает набор значений"
+        }
+    ],
+    "errors": [
+        {
+            "source": "Некорректное значение",
+            "translated": "Некорректное значение"
+        },
+        {
+            "source": "Необходимо выбрать минимум одно поле для выгрузки",
+            "translated": "Необходимо выбрать минимум одно поле для выгрузки"
+        },
+        {
+            "source": "Выбрано несуществующее поле \"{field}\"",
+            "translated": "Выбрано несуществующее поле \"{field}\""
         }
     ]
 }
