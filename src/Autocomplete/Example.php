@@ -8,13 +8,13 @@
 namespace Leadvertex\Plugin\Instance\Macros\Autocomplete;
 
 
+use Leadvertex\Plugin\Components\Form\Components\AutocompleteInterface;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Macros\Components\AutocompleteInterface;
 
 class Example implements AutocompleteInterface
 {
 
-    public function query(string $query): array
+    public function query(?string $query): array
     {
         if (trim($query) === '') {
             $query = 1;
@@ -23,15 +23,15 @@ class Example implements AutocompleteInterface
         $values = [];
         if (preg_match('~^\d+$~', $query)) {
 
-            $values["dynamic_{$query}"] = [
-                'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => $query]),
+            $values["dynamic_{$query}0"] = [
+                'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}0', ['value' => $query]),
                 'group' => $this->getGroup($query)
             ];
 
             for ($i = 1; $i < 10; $i++) {
 
-                $values["dynamic_{$i}{$query}"] = [
-                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => "{$i}{$query}"]),
+                $values["dynamic_{$query}{$i}"] = [
+                    'title' => Translator::get('autocomplete', 'DYNAMIC_VALUE #{value}', ['value' => "{$query}{$i}"]),
                     'group' => $this->getGroup($i . $query)
                 ];
             }
