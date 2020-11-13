@@ -97,12 +97,12 @@ class PreviewOptionsForm extends Form
         ';
     }
 
-    private function getVariables(): array
+    private function getVariables(int $pageNumber = 1): array
     {
         $fsp = [
             'pagination' => [
-                'pageNumber' => 1,
-                'pageSize' => 5
+                'pageNumber' => $pageNumber,
+                'pageSize' => $this->fsp->getPageSize()
             ]
         ];
 
