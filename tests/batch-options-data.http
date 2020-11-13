@@ -1,0 +1,59 @@
+PUT {{host}}/data/batch/1
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "response_options": {
+    "errors": 2,
+    "skipped": 2,
+    "delay": 1,
+    "nullCount": false,
+    "response": ["static_success"]
+  }
+}
+
+###
+
+PUT {{host}}/data/batch/1
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "response_options": {
+    "errors": 1,
+    "skipped": 1,
+    "delay": 1,
+    "post_processing_time": 1,
+    "nullCount": false,
+    "response": ["static_uri"]
+  }
+}
+
+###
+
+PUT {{host}}/data/batch/1
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+  "response_options": {
+    "errors": 1,
+    "skipped": 1,
+    "delay": 1,
+    "nullCount": false,
+    "response": ["static_error"]
+  }
+}
+
+###
+
+PUT {{host}}/data/batch/2
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+
+###

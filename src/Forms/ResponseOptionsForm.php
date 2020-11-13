@@ -4,7 +4,6 @@ namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\BooleanDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\FieldDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Limit;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\StaticValues;
@@ -12,7 +11,6 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
 use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
 
@@ -41,7 +39,7 @@ class ResponseOptionsForm extends Form
 
     public function getResponseOptionsFields($withDefault = true): array
     {
-        $staticValidator = function ($values, ListOfEnumDefinition $definition, FormData $form) {
+        $staticValidator = function ($values, ListOfEnumDefinition $definition) {
             $limit = $definition->getLimit();
 
             $errors = [];
@@ -114,7 +112,7 @@ class ResponseOptionsForm extends Form
             'errors' => new IntegerDefinition(
                 Translator::get('response_options', 'SET_ERRORS_COUNT_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_ERRORS_COUNT_FIELD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_int($value) || $value < 0) {
                         $errors[] = Translator::get('response_options', 'SET_ERRORS_COUNT_FIELD_VALIDATION_ERROR');
@@ -126,7 +124,7 @@ class ResponseOptionsForm extends Form
             'skipped' => new IntegerDefinition(
                 Translator::get('response_options', 'SET_SKIPPED_COUNT_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_SKIPPED_COUNT_FIELD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_int($value) || $value < 0) {
                         $errors[] = Translator::get('response_options', 'SET_SKIPPED_COUNT_FIELD_VALIDATION_ERROR');
@@ -138,7 +136,7 @@ class ResponseOptionsForm extends Form
             'delay' => new IntegerDefinition(
                 Translator::get('response_options', 'SET_PROCESSING_DELAY_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_PROCESSING_DELAY_FIELD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_int($value) || $value < 0) {
                         $errors[] = Translator::get('response_options', 'SET_PROCESSING_DELAY_FIELD_VALIDATION_ERROR');
@@ -147,10 +145,22 @@ class ResponseOptionsForm extends Form
                 },
                 $withDefault ? 0 : null
             ),
+            'post_processing_time' => new IntegerDefinition(
+                Translator::get('response_options', 'SET_POST_PROCESSING_TIME_TITLE'),
+                Translator::get('response_options', 'SET_POST_PROCESSING_TIME_DESCRIPTION'),
+                function ($value) {
+                    $errors = [];
+                    if (!is_int($value) || $value < 0) {
+                        $errors[] = Translator::get('response_options', 'SET_POST_PROCESSING_TIME_ERROR');
+                    }
+                    return $errors;
+                },
+                $withDefault ? 10 : null
+            ),
             'nullCount' => new BooleanDefinition(
                 Translator::get('response_options', 'SET_NULL_ORDER_COUNT_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_NULL_ORDER_COUNT_FIELD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_bool($value)) {
                         $errors[] = Translator::get('response_options', 'SET_NULL_ORDER_COUNT_VALIDATION_ERROR');

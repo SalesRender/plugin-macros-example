@@ -8,20 +8,17 @@
 namespace Leadvertex\Plugin\Instance\Macros;
 
 
-use Leadvertex\Plugin\Components\ApiClient\ApiFilterSortPaginate;
+use Leadvertex\Plugin\Components\Batch\BatchHandlerInterface;
 use Leadvertex\Plugin\Components\Developer\Developer;
 use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Process\Components\Error;
-use Leadvertex\Plugin\Components\Process\Process;
 use Leadvertex\Plugin\Components\Purpose\PluginClass;
 use Leadvertex\Plugin\Components\Purpose\PluginEntity;
 use Leadvertex\Plugin\Components\Purpose\PluginPurpose;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Macros\Components\AutocompleteInterface;
-use Leadvertex\Plugin\Core\Macros\Helpers\PathHelper;
 use Leadvertex\Plugin\Core\Macros\MacrosPlugin;
-use Leadvertex\Plugin\Core\Macros\Models\Session;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
+use Leadvertex\Plugin\Instance\Macros\Components\BatchHandler;
+use Leadvertex\Plugin\Instance\Macros\Components\PathHelper;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
@@ -43,33 +40,21 @@ class Plugin extends MacrosPlugin
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getDefaultLanguage(): string
     {
         return 'ru_RU';
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getName(): string
     {
         return Translator::get('info', 'PLUGIN_NAME');
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getDescription(): string
     {
         return Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents(PathHelper::getRoot()->down('markdown.md'));
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getPurpose(): PluginPurpose
     {
         return new PluginPurpose(
@@ -78,9 +63,6 @@ class Plugin extends MacrosPlugin
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public static function getDeveloper(): Developer
     {
         return new Developer(
@@ -90,9 +72,6 @@ class Plugin extends MacrosPlugin
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getSettingsForm(): Form
     {
         if (is_null($this->settings)) {
@@ -102,10 +81,7 @@ class Plugin extends MacrosPlugin
         return $this->settings;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function getRunForm(int $number): ?Form
+    public function getBatchForm(int $number): ?Form
     {
         switch ($number) {
             case 1:
@@ -117,142 +93,13 @@ class Plugin extends MacrosPlugin
         }
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function autocomplete(string $name): ?AutocompleteInterface
+    public function handler(): BatchHandlerInterface
     {
-        if ($name === 'example') {
-            return new Example();
-        }
-        return null;
+        return new BatchHandler($this);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function run(Process $process, ?ApiFilterSortPaginate $fsp)
+    public function autocomplete(string $name): ?\Leadvertex\Plugin\Components\Form\Components\AutocompleteInterface
     {
-        $session = Session::current();
-        $responseOptions = $session->getOptions(1)->get('response_options');
-
-        $description = empty($responseOptions['description']) ? null : $responseOptions['description'];
-        $process->setDescription($description);
-
-        $session->getToken()->getPluginToken();
-
-        if ($responseOptions['nullCount']) {
-            $process->initialize(null);
-            $process->save();
-        } else {
-            $queryResult = self::getOrdersWithFsp($session->getFsp());
-            if ($queryResult['success']) {
-                $process->initialize((count($queryResult['data'])));
-                $process->save();
-                $orderIds = array_map(function ($order) { return $order['id']; }, $queryResult['data']);
-            } else {
-                $process->initialize(null);
-                $process->terminate(new Error('Bad GraphQL request. Errors: ' . json_encode($queryResult['errors'])));
-                $process->save();
-                return;
-            }
-        }
-
-        if (isset($orderIds)) {
-            for ($i = 1; $i <= $responseOptions['errors']; $i++) {
-                $id = array_shift($orderIds);
-                (($i % 2) == 0) ? $process->addError(new Error('Test error', $id)) : $process->addError(new Error('Test error'));
-                sleep($responseOptions['delay']);
-                $process->save();
-            }
-        } else {
-            for ($i = 1; $i <= $responseOptions['errors']; $i++) {
-                (($i % 2) == 0) ? $process->addError(new Error('Test error', $i)) : $process->addError(new Error('Test error'));
-                sleep($responseOptions['delay']);
-                $process->save();
-            }
-        }
-
-        for ($i = 1; $i <= $responseOptions['skipped']; $i++) {
-            $process->skip();
-            sleep($responseOptions['delay']);
-            $process->save();
-        }
-
-        if (!is_null($process->initialized)) {
-            if ($responseOptions['errors'] + $responseOptions['skipped'] < $process->initialized) {
-                for ($i = 1; $i <= $process->initialized - ($responseOptions['errors'] + $responseOptions['skipped']); $i++) {
-                    $process->handle();
-                    sleep($responseOptions['delay']);
-                    $process->save();
-                }
-            }
-        }
-
-        switch ($responseOptions['response'][0]) {
-            case 'static_uri': {
-                $processResult = 'http://example.com';
-                break;
-            }
-            case 'static_success': {
-                $processResult = true;
-                break;
-            }
-            case 'static_error': {
-                $processResult = false;
-                break;
-            }
-            default: $processResult = null;
-        }
-
-        $process->finish($processResult);
-        $process->save();
-    }
-
-    static public function getOrdersWithFsp(ApiFilterSortPaginate $fsp): array
-    {
-        $session = Session::current();
-        $api = $session->getApiClient();
-
-        $variables['query'] = '$pagination: Pagination!';
-        $variables['fetcher'] = 'pagination: $pagination';
-        $variablesValues = [
-            'pagination' => ['pageSize' => $fsp->getPageSize()]
-        ];
-
-        if (!is_null($fsp->getFilters())) {
-            $variables['query'] .= ', $filters: OrderFilter';
-            $variables['fetcher'] .= ', filters: $filters';
-            $variablesValues['filters'] = $fsp->getFilters();
-        }
-
-        if (!is_null($fsp->getSort())) {
-            $variables['query'] .= ', $sort: OrderSort';
-            $variables['fetcher'] .= ', sort: $sort';
-            $variablesValues['sort'] = $fsp->getSort();
-        }
-
-        $query = <<<QUERY
-query ({$variables['query']}){
-  ordersFetcher({$variables['fetcher']}) {
-    orders {
-      id
-      status {
-        name
-      }
-    }
-  }
-}
-QUERY;
-
-        $result = $api->query($query, $variablesValues);
-        if ($result->hasErrors()) {
-            return ['success' => false, 'errors' => $result->getErrors()];
-        }
-
-        return [
-            'success' => true,
-            'data' => $result->getData()['ordersFetcher']['orders']
-        ];
+        return new Example();
     }
 }

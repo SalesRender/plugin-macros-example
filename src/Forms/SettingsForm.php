@@ -9,7 +9,6 @@ namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\BooleanDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\FieldDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\FileDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\FloatDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
@@ -22,9 +21,9 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Form\FormData;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Macros\Helpers\PathHelper;
+use Leadvertex\Plugin\Instance\Macros\Components\Columns;
+use Leadvertex\Plugin\Instance\Macros\Components\PathHelper;
 
 class SettingsForm extends Form
 {
@@ -44,7 +43,7 @@ class SettingsForm extends Form
                 'group_1' => new FieldGroup(
                     Translator::get('settings', 'GROUP_1'),
                     Translator::get('settings', 'GROUP_1_DESCRIPTION'),
-                    $this->getFieldsArray(true)
+                    $this->getFieldsArray()
                 ),
                 'group_2' => new FieldGroup(
                     Translator::get('settings', 'GROUP_2'),
@@ -66,6 +65,7 @@ class SettingsForm extends Form
 
     protected function getFieldsArray($withDefault = true): array
     {
+        $columns = new Columns();
         $values = [];
         for ($i = 1; $i <= 10; $i++) {
             $values["static_{$i}"] = [
@@ -82,7 +82,7 @@ class SettingsForm extends Form
         }
 
         $staticValues = new StaticValues($values);
-        $staticValidator = function ($values, ListOfEnumDefinition $definition, FormData $form) {
+        $staticValidator = function ($values, ListOfEnumDefinition $definition) {
             $limit = $definition->getLimit();
 
             $errors = [];
@@ -122,13 +122,57 @@ class SettingsForm extends Form
         };
 
         return [
+            'fields' => new ListOfEnumDefinition(
+                Translator::get(
+                    'settings',
+                    'Столбцы'
+                ),
+                Translator::get(
+                    'settings',
+                    'Выберите данные, которые вы хотите выгружать'
+                ),
+                function ($values) use ($columns) {
+                    if (!is_array($values)) {
+                        return [Translator::get(
+                            'errors',
+                            'Некорректное значение'
+                        )];
+                    }
+
+                    $errors = [];
+                    if (count($values) < 1) {
+                        $errors[] = Translator::get(
+                            'errors',
+                            'Необходимо выбрать минимум одно поле для выгрузки'
+                        );
+                    }
+
+                    foreach ($values as $value) {
+                        if (!isset($columns->getList()[$value])) {
+                            $errors[] = Translator::get(
+                                'errors',
+                                'Выбрано несуществующее поле "{field}"',
+                                ['field' => $value]
+                            );
+                        }
+                    }
+
+                    return $errors;
+                },
+                new StaticValues($columns->getList()),
+                new Limit(1, null),
+                $withDefault ? ['id', 'createdAt', 'cart.total'] : null
+            ),
             'bool_field' => new BooleanDefinition(
                 Translator::get('settings', 'BOOL_TITLE'),
                 Translator::get('settings', 'BOOL_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_bool($value)) {
                         $errors[] = Translator::get('settings', 'BOOL_VALIDATION_ERROR');
+                    }
+                    if (is_null($value)) {
+                        $errors[] = Translator::get('settings', 'NULL_ERROR');
                     }
                     return $errors;
                 },
@@ -137,7 +181,7 @@ class SettingsForm extends Form
             'float_field' => new FloatDefinition(
                 Translator::get('settings', 'FLOAT_TITLE'),
                 Translator::get('settings', 'FLOAT_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_numeric($value)) {
                         $errors[] = Translator::get('settings', 'FLOAT_VALIDATION_ERROR');
@@ -149,7 +193,7 @@ class SettingsForm extends Form
             'integer_field' => new IntegerDefinition(
                 Translator::get('settings', 'INTEGER_TITLE'),
                 Translator::get('settings', 'INTEGER_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_int($value)) {
                         $errors[] = Translator::get('settings', 'INTEGER_VALIDATION_ERROR');
@@ -161,7 +205,7 @@ class SettingsForm extends Form
             'password_field' => new PasswordDefinition(
                 Translator::get('settings', 'PASSWORD_TITLE'),
                 Translator::get('settings', 'PASSWORD_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
 
                     if (!is_scalar($value)) {
@@ -191,7 +235,7 @@ class SettingsForm extends Form
             'string_field' => new StringDefinition(
                 Translator::get('settings', 'STRING_TITLE'),
                 Translator::get('settings', 'STRING_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
 
                     if (!is_scalar($value)) {
@@ -206,10 +250,10 @@ class SettingsForm extends Form
                 },
                 $withDefault ? 'support@leadvertex.ru' : null
             ),
-            'markdwn_field' => new MarkdownDefinition(
+            'markdown_field' => new MarkdownDefinition(
                 Translator::get('settings', 'MARKDOWN_TITLE'),
                 Translator::get('settings', 'MARKDOWN_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
                     if (!is_string($value)) {
                         $errors[] = Translator::get('settings', 'MARKDOWN_VALIDATION_ERROR');
@@ -221,13 +265,24 @@ class SettingsForm extends Form
             'file_field' => new FileDefinition(
                 Translator::get('settings', 'FILE_TITLE'),
                 Translator::get('settings', 'FILE_DESCRIPTION'),
-                function ($value, FieldDefinition $definition, FormData $form) {
+                function ($value) {
                     $errors = [];
 
-                    $ch = curl_init((string) $value);
-                    curl_setopt($ch, CURLOPT_NOBODY, true);
-                    curl_exec($ch);
-                    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => $value,
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 0,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "GET",
+                    ));
+                    curl_exec($curl);
+                    $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                    curl_close($curl);
 
                     if ($code !== 200) {
                         $errors[] = Translator::get('settings', 'FILE_VALIDATION_ERROR');
@@ -240,7 +295,7 @@ class SettingsForm extends Form
             'listOfEnum_field_dynamic' => new ListOfEnumDefinition(
                 Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
                 Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
-                function ($values, FieldDefinition $definition, FormData $form) {
+                function ($values) {
                     $errors = [];
 
                     if (!is_null($values) && !is_array($values)) {
@@ -260,7 +315,7 @@ class SettingsForm extends Form
                     return $errors;
                 },
                 new DynamicValues($_ENV['LV_PLUGIN_SELF_URI'] . 'autocomplete/example'),
-                null,
+                new Limit(2, null),
                 $withDefault ? ['dynamic_10', 'dynamic_1'] : null
             ),
             'listOfEnum_field_static' => new ListOfEnumDefinition(

@@ -3,49 +3,46 @@
 namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
+use Adbar\Dot;
+use Leadvertex\Plugin\Components\Batch\Batch;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
+use Leadvertex\Plugin\Components\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Macros\Models\Session;
+use Leadvertex\Plugin\Instance\Macros\Components\Columns;
 use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
-use Leadvertex\Plugin\Instance\Macros\Plugin;
+use XAKEPEHOK\ArrayGraphQL\ArrayGraphQL;
 
 class PreviewOptionsForm extends Form
 {
     use OptionsSingletonTrait;
 
+    private $orders;
+    private $fsp;
+    private $fields;
+    private $batch;
+
+
     private function __construct()
     {
-        $options = Session::current()->getOptions(1);
-        if (!$options->isEmpty()) {
-            if (!$options->get('response_options.nullCount', true)) {
-                $queryResult = Plugin::getOrdersWithFsp(Session::current()->getFsp());
-                if ($queryResult['success']) {
-                    $groupDescription = Translator::get(
-                        'orders_to_process_options',
-                        'GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}',
-                        [
-                            'ordersCount' => count($queryResult['data']),
-                            'ordersTable' => $this->generateMarkdownTableForOrdersIds($queryResult['data'])
-                        ]
-                    );
-                } else {
-                    $groupDescription = Translator::get(
-                        'orders_to_process_options',
-                        'GROUP_1_QUERY_ERROR_DESCRIPTION {errors}',
-                        ['errors' => json_encode($queryResult['errors'])]
-                    );
-                }
-            } else {
-                $groupDescription = Translator::get(
-                    'orders_to_process_options',
-                    'GROUP_1_NO_ORDERS_DESCRIPTION'
-                );
-            }
+        $this->fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
+        $this->batch = Batch::findById(GraphqlInputToken::getInstance()->getId());
+        $this->fsp = $this->batch->getFsp();
+        $this->orders = $this->getOrders();
+
+        if (!is_null($this->orders)) {
+            $groupDescription = Translator::get(
+                'orders_to_process_options',
+                'GROUP_1_ORDERS_DESCRIPTION {ordersCount} {ordersTable}',
+                [
+                    'ordersCount' => count($this->orders),
+                    'ordersTable' => $this->generateMarkdownTableForOrders()
+                ]
+            );
         } else {
             $groupDescription = Translator::get(
                 'orders_to_process_options',
-                'GROUP_1_NO_ORDERS_DESCRIPTION'
+                'GROUP_1_QUERY_ERROR_DESCRIPTION {errors}'
             );
         }
 
@@ -66,15 +63,67 @@ class PreviewOptionsForm extends Form
         );
     }
 
-    private function generateMarkdownTableForOrdersIds(array $orders): string
+    private function generateMarkdownTableForOrders(): string
     {
-        $tableHeader = "|Orders ids|Status name|\n|---|---|\n";
-
+        $orders = $this->orders;
+        $fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
         $tableContent = '';
+        $tableKey = '';
+        $tableSecondRow = '';
+        foreach ($fields as $field) {
+            $tableSecondRow .= "|---";
+            $tableKey .= "|{$field}";
+        }
         foreach ($orders as $order) {
-            $tableContent .= "|{$order['id']}|{$order['status']['name']}|\n";
+            $order = (new Dot($order));
+            $tableData = '';
+            foreach ($fields as $field) {
+                $field = preg_replace('/\[[^\]]+]/', '0', $field);
+                $tableData .= "|{$order->get($field)} ";
+            }
+            $tableContent .= "{$tableData}|" . PHP_EOL;
         }
 
-        return $tableHeader . $tableContent;
+        return PHP_EOL . $tableKey . '|' . PHP_EOL . $tableSecondRow . '|' . PHP_EOL . $tableContent;
+    }
+
+    private function getQuery(): string
+    {
+        $fields = ArrayGraphQL::convert(Columns::getQueryColumns($this->fields));
+        return '
+            query($pagination: Pagination!, $filters: OrderFilter, $sort: OrderSort) {
+                ordersFetcher(pagination: $pagination, filters: $filters, sort: $sort) ' . $fields . '
+            }
+        ';
+    }
+
+    private function getVariables(int $pageNumber = 1): array
+    {
+        $fsp = [
+            'pagination' => [
+                'pageNumber' => $pageNumber,
+                'pageSize' => $this->fsp->getPageSize()
+            ]
+        ];
+
+        if ($this->fsp->getFilters()) {
+            $fsp['filters'] = $this->fsp->getFilters();
+        }
+
+        if ($this->fsp->getSort()) {
+            $fsp['sort'] = [
+                'field' => $this->fsp->getSort()->getField(),
+                'direction' => $this->fsp->getSort()->getDirection(),
+            ];
+        }
+
+        return $fsp;
+    }
+
+    private function getOrders(): array
+    {
+        $apiClient = $this->batch->getApiClient();
+        $response = new Dot($apiClient->query($this->getQuery(), $this->getVariables())->getData());
+        return $response->get('ordersFetcher.orders');
     }
 }

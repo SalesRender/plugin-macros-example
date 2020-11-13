@@ -1,6 +1,8 @@
-POST {{host}}/batch/run
+POST {{host}}/batch/prepare
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
 
-###
+{
+  "sort": {"field": "id", "direction": "ASC"}
+}

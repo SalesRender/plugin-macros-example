@@ -1,4 +1,7 @@
-GET {{host}}/autocomplete/example?query=9
+GET {{host}}/autocomplete/example
+###
+
+GET {{host}}/autocomplete/example?query=66
 
 ###
 
