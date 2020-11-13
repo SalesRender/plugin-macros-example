@@ -206,7 +206,7 @@
         },
         {
             "source": "Логический (да\/нет)",
-            "translated": "Логический (да/нет)"
+            "translated": "Логический (да\/нет)"
         },
         {
             "source": "Дата и время",
@@ -459,6 +459,18 @@
         {
             "source": "SET_PROCESSING_DELAY_FIELD_VALIDATION_ERROR",
             "translated": "Значение должно быть числом >= 0"
+        },
+        {
+            "source": "SET_POST_PROCESSING_TIME_TITLE",
+            "translated": "Время выполения постобработки"
+        },
+        {
+            "source": "SET_POST_PROCESSING_TIME_DESCRIPTION",
+            "translated": "Устанавливает указанное время (в секундах) выполнения постобработки."
+        },
+        {
+            "source": "SET_POST_PROCESSING_TIME_ERROR",
+            "translated": "Не корректное время постобработки"
         },
         {
             "source": "SET_NULL_ORDER_COUNT_FIELD_TITLE",
