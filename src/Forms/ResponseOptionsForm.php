@@ -145,6 +145,18 @@ class ResponseOptionsForm extends Form
                 },
                 $withDefault ? 0 : null
             ),
+            'post_processing_time' => new IntegerDefinition(
+                Translator::get('response_options', 'SET_POST_PROCESSING_TIME_TITLE'),
+                Translator::get('response_options', 'SET_POST_PROCESSING_TIME_DESCRIPTION'),
+                function ($value) {
+                    $errors = [];
+                    if (!is_int($value) || $value < 0) {
+                        $errors[] = Translator::get('response_options', 'SET_POST_PROCESSING_TIME_ERROR');
+                    }
+                    return $errors;
+                },
+                $withDefault ? 10 : null
+            ),
             'nullCount' => new BooleanDefinition(
                 Translator::get('response_options', 'SET_NULL_ORDER_COUNT_FIELD_TITLE'),
                 Translator::get('response_options', 'SET_NULL_ORDER_COUNT_FIELD_DESCRIPTION'),
