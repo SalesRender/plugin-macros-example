@@ -9,6 +9,7 @@ namespace Leadvertex\Plugin\Instance\Macros\Components;
 
 use Leadvertex\Plugin\Components\Batch\Batch;
 use Leadvertex\Plugin\Components\Batch\BatchHandlerInterface;
+use Leadvertex\Plugin\Components\Process\Components\Error;
 use Leadvertex\Plugin\Components\Process\Process;
 use Leadvertex\Plugin\Components\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Instance\Macros\Plugin;
@@ -21,6 +22,11 @@ class BatchHandler implements BatchHandlerInterface
      */
     private $plugin;
 
+    private static $skipped;
+    private static $errors;
+    private static $isNullCount;
+    private static $response;
+
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
@@ -32,17 +38,53 @@ class BatchHandler implements BatchHandlerInterface
         $fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
 
         $delay = $batch->getOptions(1)->get('response_options.delay');
+        self::$isNullCount = $batch->getOptions(1)->get('response_options.nullCount');
+        self::$skipped = $batch->getOptions(1)->get('response_options.skipped');
+        self::$errors = $batch->getOptions(1)->get('response_options.errors');
+        self::$response = $batch->getOptions(1)->get('response_options.response');
 
         $iterator->iterator(
             Columns::getQueryColumns($fields),
-            function (Process $process) use ($delay) {
-                $process->handle();
+            function ($field, Process $process) use ($delay) {
+                if (self::$isNullCount) {
+                    $process->initialized = null;
+                }
+                if (self::$skipped !== 0) {
+                    $process->skip();
+                    self::$skipped--;
+                } elseif (self::$errors !== 0) {
+                    $process->addError(new Error('Test error', $field['id']));
+                    self::$errors--;
+                } else {
+                    $process->handle();
+                }
                 $process->save();
                 sleep($delay);
             }
         );
 
-        $process->finish(true);
+        $process->setState(Process::STATE_POST_PROCESSING);
+        $process->save();
+        sleep($batch->getOptions(1)->get('response_options.post_processing_time'));
+
+        $response = '';
+
+        switch (self::$response[0]) {
+            case 'static_success': {
+                $response = true;
+                break;
+            }
+            case 'static_uri': {
+                $response = "https://leadvertex.ru/img/logo.png";
+                break;
+            }
+            case 'static_error': {
+                $response = false;
+                break;
+            }
+        }
+
+        $process->finish($response);
         $process->save();
     }
 }
