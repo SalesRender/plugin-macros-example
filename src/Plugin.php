@@ -21,6 +21,7 @@ use Leadvertex\Plugin\Instance\Macros\Components\BatchHandler;
 use Leadvertex\Plugin\Instance\Macros\Components\PathHelper;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
+use Leadvertex\Plugin\Instance\Macros\Forms\SecondResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
 
 class Plugin extends MacrosPlugin
@@ -87,6 +88,8 @@ class Plugin extends MacrosPlugin
             case 1:
                 return ResponseOptionsForm::getInstance();
             case 2:
+                return SecondResponseOptionsForm::getInstance();
+            case 3:
                 return PreviewOptionsForm::getInstance();
             default:
                 return null;

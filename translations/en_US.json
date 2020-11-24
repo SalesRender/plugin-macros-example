@@ -206,7 +206,7 @@
         },
         {
             "source": "Логический (да\/нет)",
-            "translated": "Boolean (yes / no)"
+            "translated": "Boolean (yes \/ no)"
         },
         {
             "source": "Дата и время",
@@ -491,6 +491,64 @@
         {
             "source": "SET_RESPONSE_DESCRIPTION",
             "translated": "Sets the process result as Uri(static_uri), Success(static_success) or Error(static_error)."
+        },
+        {
+            "source": "SET_STRING_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "SET_INT_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "SET_BOOL_ERROR",
+            "translated": ""
+        }
+    ],
+    "second_response_options": [
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Additional settings"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Additional settings for checking saving when going back"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Options group №1"
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "SET_ONE",
+            "translated": "One"
+        },
+        {
+            "source": "SET_TWO",
+            "translated": "Two"
+        },
+        {
+            "source": "SET_THREE",
+            "translated": "Three"
+        },
+        {
+            "source": "SET_STRING_FIELD",
+            "translated": "String"
+        },
+        {
+            "source": "SET_INT_FIELD",
+            "translated": "Integer"
+        },
+        {
+            "source": "SET_BOOL_FIELD",
+            "translated": "Switch"
+        },
+        {
+            "source": "SET_ENUM_FIELD",
+            "translated": "List"
         }
     ],
     "settings": [

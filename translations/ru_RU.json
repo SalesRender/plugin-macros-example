@@ -491,6 +491,64 @@
         {
             "source": "SET_RESPONSE_DESCRIPTION",
             "translated": "Устанавливает результат как один из предложенных вариантов - ссылка(static_uri), успех(static_success) или ошибка(static_error)."
+        },
+        {
+            "source": "SET_STRING_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "SET_INT_ERROR",
+            "translated": ""
+        },
+        {
+            "source": "SET_BOOL_ERROR",
+            "translated": ""
+        }
+    ],
+    "second_response_options": [
+        {
+            "source": "OPTIONS_TITLE",
+            "translated": "Дополнительные настройки"
+        },
+        {
+            "source": "OPTIONS_DESCRIPTION",
+            "translated": "Дополнительные настройки, для проверки сохранения при возврате назад"
+        },
+        {
+            "source": "GROUP_1",
+            "translated": "Группа настроек №1"
+        },
+        {
+            "source": "GROUP_1_DESCRIPTION",
+            "translated": ""
+        },
+        {
+            "source": "SET_ONE",
+            "translated": "Один"
+        },
+        {
+            "source": "SET_TWO",
+            "translated": "Два"
+        },
+        {
+            "source": "SET_THREE",
+            "translated": "Три"
+        },
+        {
+            "source": "SET_STRING_FIELD",
+            "translated": "Строка"
+        },
+        {
+            "source": "SET_INT_FIELD",
+            "translated": "Число"
+        },
+        {
+            "source": "SET_BOOL_FIELD",
+            "translated": "Переключатель"
+        },
+        {
+            "source": "SET_ENUM_FIELD",
+            "translated": "Список"
         }
     ],
     "settings": [
