@@ -238,6 +238,10 @@ class SettingsForm extends Form
                 function ($value) {
                     $errors = [];
 
+                    if (trim($value) === '') {
+                        $errors[] = Translator::get('settings', 'STRING_VALIDATION_INVALID_ARGUMENT');
+                    }
+
                     if (!is_scalar($value)) {
                         $errors[] = Translator::get('settings', 'STRING_VALIDATION_INVALID_ARGUMENT');
                     }

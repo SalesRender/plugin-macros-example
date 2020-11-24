@@ -102,9 +102,14 @@ class ResponseOptionsForm extends Form
                 null,
                 function ($value) {
                     $errors = [];
-                    if (!is_string($value) || trim($value) == '') {
+                    if (!is_string($value)) {
                         $errors[] = Translator::get('response_options', 'SET_PROCESS_DESCRIPTION_ERROR');
                     }
+
+                    if (trim($value) === '') {
+                        $errors[] = Translator::get('response_options', 'SET_PROCESS_DESCRIPTION_ERROR');
+                    }
+
                     return $errors;
                 },
                 ''
