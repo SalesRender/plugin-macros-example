@@ -137,7 +137,7 @@ class SecondResponseOptionsForm extends Form
                 $staticValidator,
                 $setResponseValues,
                 new Limit(1, 1),
-                $withDefault ? ['static_success'] : null
+                $withDefault ? ['one'] : null
             )
         ];
     }
