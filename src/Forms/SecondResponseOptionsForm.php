@@ -27,7 +27,7 @@ class SecondResponseOptionsForm extends Form
                 'second_response_options' => new FieldGroup(
                     Translator::get('second_response_options', 'GROUP_1'),
                     Translator::get('second_response_options', 'GROUP_1_DESCRIPTION'),
-                    $this->getResponseOptionsFields()
+                    $this->getSecondResponseOptionsFields()
                 )
             ],
             Translator::get(
@@ -37,7 +37,7 @@ class SecondResponseOptionsForm extends Form
         );
     }
 
-    public function getResponseOptionsFields($withDefault = true): array
+    public function getSecondResponseOptionsFields($withDefault = true): array
     {
         $staticValidator = function ($values, ListOfEnumDefinition $definition) {
             $limit = $definition->getLimit();
@@ -65,9 +65,9 @@ class SecondResponseOptionsForm extends Form
             }
 
             $possibleValues = [
-                'static_uri',
-                'static_success',
-                'static_error'
+                'one',
+                'two',
+                'three'
             ];
 
             foreach ($values as $value) {
