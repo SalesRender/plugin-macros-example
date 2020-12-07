@@ -16,11 +16,11 @@
     }
   },
   "require": {
-    "php": ">=7.2.0",
+    "php": ">=7.4.0",
     "ext-curl": "*",
     "ext-json": "*",
     "xakepehok/array-graphql": "^0.0.1",
-    "leadvertex/plugin-core-macros": "^0.15.0",
-    "leadvertex/plugin-component-translations": "^0.1.1"
+    "leadvertex/plugin-core-macros": "^0.16.0",
+    "leadvertex/plugin-component-purpose": "^1.3"
   }
 }
