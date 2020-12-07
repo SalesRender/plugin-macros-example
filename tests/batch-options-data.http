@@ -1,4 +1,4 @@
-PUT {{host}}/data/batch/1
+PUT {{host}}/protected/data/batch/1
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
@@ -15,13 +15,14 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/batch/1
+PUT {{host}}/protected/data/batch/1
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
 
 {
   "response_options": {
+    "description": "d",
     "errors": 1,
     "skipped": 1,
     "delay": 1,
@@ -33,7 +34,7 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/batch/1
+PUT {{host}}/protected/data/batch/1
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
@@ -50,10 +51,26 @@ X-PLUGIN-TOKEN: {{token}}
 
 ###
 
-PUT {{host}}/data/batch/2
+PUT {{host}}/protected/data/batch/2
 Content-Type: application/json
 Accept-Language: ru_RU
 X-PLUGIN-TOKEN: {{token}}
 
+{
+  "second_response_options": {
+    "stringField": "1",
+    "intField": 1,
+    "boolField": false,
+    "enumField": ["one"]
+  }
+}
+###
 
+PUT {{host}}/protected/data/batch/3
+Content-Type: application/json
+Accept-Language: ru_RU
+X-PLUGIN-TOKEN: {{token}}
+
+{
+}
 ###
