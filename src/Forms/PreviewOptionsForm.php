@@ -4,29 +4,29 @@ namespace Leadvertex\Plugin\Instance\Macros\Forms;
 
 
 use Adbar\Dot;
+use Leadvertex\Plugin\Components\Access\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\Batch\Batch;
+use Leadvertex\Plugin\Components\Db\Model;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Token\GraphqlInputToken;
+use Leadvertex\Plugin\Components\Settings\Settings;
 use Leadvertex\Plugin\Components\Translations\Translator;
 use Leadvertex\Plugin\Instance\Macros\Components\Columns;
-use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
 use XAKEPEHOK\ArrayGraphQL\ArrayGraphQL;
 
 class PreviewOptionsForm extends Form
 {
-    use OptionsSingletonTrait;
 
-    private $orders;
+    private array $orders;
     private $fsp;
     private $fields;
-    private $batch;
+    private ?Model $batch;
 
 
-    private function __construct()
+    public function __construct()
     {
-        $this->fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
         $this->batch = Batch::findById(GraphqlInputToken::getInstance()->getId());
+        $this->fields = Settings::find()->getData()->get('group_1.fields');
         $this->fsp = $this->batch->getFsp();
         $this->orders = $this->getOrders();
 
@@ -66,7 +66,7 @@ class PreviewOptionsForm extends Form
     private function generateMarkdownTableForOrders(): string
     {
         $orders = $this->orders;
-        $fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
+        $fields = $this->fields;
         $tableContent = '';
         $tableKey = '';
         $tableSecondRow = '';

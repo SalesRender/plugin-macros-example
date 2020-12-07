@@ -8,8 +8,8 @@
 namespace Leadvertex\Plugin\Instance\Macros\Components;
 
 
+use Leadvertex\Plugin\Components\Access\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\ApiClient\ApiClient;
-use Leadvertex\Plugin\Components\Token\GraphqlInputToken;
 use Leadvertex\Plugin\Components\Translations\Translator;
 
 class Columns

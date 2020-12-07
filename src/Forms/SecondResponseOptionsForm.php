@@ -12,11 +12,9 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
 
 class SecondResponseOptionsForm extends Form
 {
-    use OptionsSingletonTrait;
 
     public function __construct()
     {

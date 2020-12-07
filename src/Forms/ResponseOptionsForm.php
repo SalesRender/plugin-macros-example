@@ -12,11 +12,9 @@ use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use Leadvertex\Plugin\Components\Form\FieldGroup;
 use Leadvertex\Plugin\Components\Form\Form;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Instance\Macros\Components\OptionsSingletonTrait;
 
 class ResponseOptionsForm extends Form
 {
-    use OptionsSingletonTrait;
 
     public function __construct()
     {
@@ -100,18 +98,7 @@ class ResponseOptionsForm extends Form
             'description' => new StringDefinition(
                 Translator::get('response_options', 'SET_PROCESS_DESCRIPTION'),
                 null,
-                function ($value) {
-                    $errors = [];
-                    if (!is_string($value)) {
-                        $errors[] = Translator::get('response_options', 'SET_PROCESS_DESCRIPTION_ERROR');
-                    }
-
-                    if (trim($value) === '') {
-                        $errors[] = Translator::get('response_options', 'SET_PROCESS_DESCRIPTION_ERROR');
-                    }
-
-                    return $errors;
-                },
+                fn() => [],
                 ''
             ),
             'errors' => new IntegerDefinition(

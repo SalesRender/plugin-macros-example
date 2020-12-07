@@ -11,31 +11,21 @@ use Leadvertex\Plugin\Components\Batch\Batch;
 use Leadvertex\Plugin\Components\Batch\BatchHandlerInterface;
 use Leadvertex\Plugin\Components\Process\Components\Error;
 use Leadvertex\Plugin\Components\Process\Process;
-use Leadvertex\Plugin\Components\Token\GraphqlInputToken;
-use Leadvertex\Plugin\Instance\Macros\Plugin;
+use Leadvertex\Plugin\Components\Settings\Settings;
 
-class BatchHandler implements BatchHandlerInterface
+class ExampleHandler implements BatchHandlerInterface
 {
-
-    /**
-     * @var Plugin
-     */
-    private $plugin;
 
     private static $skipped;
     private static $errors;
     private static $isNullCount;
     private static $response;
 
-    public function __construct(Plugin $plugin)
-    {
-        $this->plugin = $plugin;
-    }
-
     public function __invoke(Process $process, Batch $batch)
     {
         $iterator = new OrdersFetcherIterator($process, $batch->getApiClient(), $batch->getFsp());
-        $fields = GraphqlInputToken::getInstance()->getSettings()->getData()->get('group_1.fields');
+
+        $fields = Settings::find()->getData()->get('group_1.fields');
 
         $delay = $batch->getOptions(1)->get('response_options.delay');
         self::$isNullCount = $batch->getOptions(1)->get('response_options.nullCount');
@@ -47,7 +37,7 @@ class BatchHandler implements BatchHandlerInterface
             Columns::getQueryColumns($fields),
             function ($field, Process $process) use ($delay) {
                 if (self::$isNullCount) {
-                    $process->initialized = null;
+                    $process->initialize(null);
                 }
                 if (self::$skipped !== 0) {
                     $process->skip();
