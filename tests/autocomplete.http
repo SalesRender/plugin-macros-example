@@ -1,4 +1,6 @@
-GET {{host}}/autocomplete/example
+GET {{host}}/protected/autocomplete/example
+X-PLUGIN-TOKEN: {{token}}
+
 ###
 
 GET {{host}}/autocomplete/example?query=66
