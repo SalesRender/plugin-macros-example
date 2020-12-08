@@ -52,7 +52,12 @@ Info::config(
 Settings::setForm(fn() => new \Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm());
 
 # 5. Configure form autocompletes (or return null if dont used)
-AutocompleteRegistry::config(fn($name) => new Example());
+AutocompleteRegistry::config(function (string $name) {
+    switch ($name) {
+        case 'example': return new Example();
+        default: return null;
+    }
+});
 
 # 6. Configure batch forms (or return null if dont used)
 BatchFormRegistry::config(function (int $number) {
