@@ -1,7 +1,6 @@
 <?php
 
-use Leadvertex\Plugin\Components\Batch\BatchFormRegistry;
-use Leadvertex\Plugin\Components\Batch\BatchHandler;
+use Leadvertex\Plugin\Components\Batch\BatchContainer;
 use Leadvertex\Plugin\Components\Db\Components\Connector;
 use Leadvertex\Plugin\Components\Form\Components\AutocompleteRegistry;
 use Leadvertex\Plugin\Components\Info\Developer;
@@ -18,6 +17,7 @@ use Leadvertex\Plugin\Instance\Macros\Components\PathHelper;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SecondResponseOptionsForm;
+use Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm;
 use Medoo\Medoo;
 use XAKEPEHOK\Path\Path;
 
@@ -49,9 +49,9 @@ Info::config(
 );
 
 # 4. Configure settings form
-Settings::setForm(fn() => new \Leadvertex\Plugin\Instance\Macros\Forms\SettingsForm());
+Settings::setForm(fn() => new SettingsForm());
 
-# 5. Configure form autocompletes (or return null if dont used)
+# 5. Configure form autocompletes
 AutocompleteRegistry::config(function (string $name) {
     switch ($name) {
         case 'example': return new Example();
@@ -59,15 +59,15 @@ AutocompleteRegistry::config(function (string $name) {
     }
 });
 
-# 6. Configure batch forms (or return null if dont used)
-BatchFormRegistry::config(function (int $number) {
-    switch ($number) {
-        case 1: return new ResponseOptionsForm();
-        case 2: return new SecondResponseOptionsForm();
-        case 3: return new PreviewOptionsForm();
-        default: return null;
-    }
-});
-
-# 6.1 Configure batch handler (or remove this block if dont used)
-BatchHandler::config(fn() => new ExampleHandler());
+# 6. Configure batch forms
+BatchContainer::config(
+    function (int $number) {
+        switch ($number) {
+            case 1: return new ResponseOptionsForm();
+            case 2: return new SecondResponseOptionsForm();
+            case 3: return new PreviewOptionsForm();
+            default: return null;
+        }
+    },
+    new ExampleHandler()
+);
