@@ -318,7 +318,7 @@ class SettingsForm extends Form
                     }
                     return $errors;
                 },
-                new DynamicValues($_ENV['LV_PLUGIN_SELF_URI'] . 'autocomplete/example'),
+                new DynamicValues('example'),
                 new Limit(2, null),
                 $withDefault ? ['dynamic_10', 'dynamic_1'] : null
             ),
