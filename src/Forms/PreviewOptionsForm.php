@@ -25,6 +25,8 @@ class PreviewOptionsForm extends Form
 
     public function __construct()
     {
+        Settings::guardIntegrity();
+
         $this->batch = Batch::findById(GraphqlInputToken::getInstance()->getId());
         $this->fields = Settings::find()->getData()->get('group_1.fields');
         $this->fsp = $this->batch->getFsp();
@@ -78,7 +80,7 @@ class PreviewOptionsForm extends Form
             $order = (new Dot($order));
             $tableData = '';
             foreach ($fields as $field) {
-                $field = preg_replace('/\[[^\]]+]/', '0', $field);
+                $field = preg_replace('/\[[^]]+]/', '0', $field);
                 $tableData .= "|{$order->get($field)} ";
             }
             $tableContent .= "{$tableData}|" . PHP_EOL;

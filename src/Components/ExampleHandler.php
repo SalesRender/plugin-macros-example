@@ -25,6 +25,7 @@ class ExampleHandler implements BatchHandlerInterface
     {
         $iterator = new OrdersFetcherIterator($process, $batch->getApiClient(), $batch->getFsp());
 
+        Settings::guardIntegrity();
         $fields = Settings::find()->getData()->get('group_1.fields');
 
         $delay = $batch->getOptions(1)->get('response_options.delay');
