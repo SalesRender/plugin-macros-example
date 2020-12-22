@@ -11,6 +11,7 @@ use Leadvertex\Plugin\Components\Purpose\PluginEntity;
 use Leadvertex\Plugin\Components\Purpose\PluginPurpose;
 use Leadvertex\Plugin\Components\Settings\Settings;
 use Leadvertex\Plugin\Components\Translations\Translator;
+use Leadvertex\Plugin\Core\Actions\UploadAction;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
 use Leadvertex\Plugin\Instance\Macros\Components\ExampleHandler;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
@@ -31,7 +32,15 @@ Connector::config(new Medoo([
 # 2. Set plugin default language
 Translator::config('ru_RU');
 
-# 3. Configure info about plugin
+# 3. Set permitted file extensions (* for any ext) and max sizes (in bytes). Pass empty array for disable file uploading
+UploadAction::config([
+    'jpg' => 1 * 1024 * 1024,       //Max 1 MB for *.jpg file
+    'png' => 2 * 1024 * 1024,       //Max 2 MB for *.jpg file
+    'zip' => 10 * 1024 * 1024, //Max 10 MB for *.zip archive
+    'rar' => 10 * 1024 * 1024, //Max 10 MB for *.rar archive
+]);
+
+# 4. Configure info about plugin
 Info::config(
     new PluginType(PluginType::MACROS),
     fn() => Translator::get('info', 'PLUGIN_NAME'),
@@ -47,10 +56,10 @@ Info::config(
     )
 );
 
-# 4. Configure settings form
+# 5. Configure settings form
 Settings::setForm(fn() => new SettingsForm());
 
-# 5. Configure form autocompletes
+# 6. Configure form autocompletes
 AutocompleteRegistry::config(function (string $name) {
     switch ($name) {
         case 'example': return new Example();
@@ -58,7 +67,7 @@ AutocompleteRegistry::config(function (string $name) {
     }
 });
 
-# 6. Configure batch forms
+# 7. Configure batch forms
 BatchContainer::config(
     function (int $number) {
         switch ($number) {
