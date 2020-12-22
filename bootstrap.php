@@ -13,7 +13,6 @@ use Leadvertex\Plugin\Components\Settings\Settings;
 use Leadvertex\Plugin\Components\Translations\Translator;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
 use Leadvertex\Plugin\Instance\Macros\Components\ExampleHandler;
-use Leadvertex\Plugin\Instance\Macros\Components\PathHelper;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use Leadvertex\Plugin\Instance\Macros\Forms\SecondResponseOptionsForm;
@@ -36,7 +35,7 @@ Translator::config('ru_RU');
 Info::config(
     new PluginType(PluginType::MACROS),
     fn() => Translator::get('info', 'PLUGIN_NAME'),
-    fn() => Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents(PathHelper::getRoot()->down('markdown.md')),
+    fn() => Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents(Path::root()->down('markdown.md')),
     new PluginPurpose(
         new PluginClass(PluginClass::CLASS_HANDLER),
         new PluginEntity(PluginEntity::ENTITY_ORDER)
