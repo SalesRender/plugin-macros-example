@@ -19,6 +19,13 @@ y.max: 40
 <div id="Lorem"><span>Ipsum</span></div>
 ```
 
+XSS Examples
+- [xss 1](javascript:alert%281%29)
+- [xss 2](javascript:alert(1))
+- <a href="javascript:alert(1)">xss 3</a>
+- <a href="#" onmouseover="javascript:alert(1)">xss 4</a>
+- <a href="#" onmouseover="javascript:alert%281%29">xss 5</a>
+
 In sed lorem a ante feugiat suscipit suscipit in tellus. Nunc in gravida erat, sed molestie nulla. Donec libero augue, mollis vitae iaculis ut, porta feugiat eros. Aliquam porta suscipit tellus eget faucibus. Nunc congue, leo et luctus vulputate, est nunc accumsan elit, suscipit sagittis orci turpis eu odio. Aenean nisl turpis, hendrerit a rutrum eget, tincidunt a leo. Sed quis feugiat nibh, volutpat dictum erat. In hac habitasse platea dictumst.
 
 Nulla tempus urna sed massa euismod hendrerit. Phasellus et purus feugiat erat rutrum euismod venenatis nec lectus. Maecenas rutrum dignissim massa, quis facilisis urna egestas quis. Pellentesque congue est a convallis laoreet. Aenean ut malesuada tellus, sit amet malesuada sapien. Quisque maximus ligula id velit ultricies, non interdum quam tempor. Integer tincidunt turpis augue, vel tincidunt erat commodo quis. Vestibulum porta felis metus, ac efficitur sapien venenatis et. Nullam nec molestie nisl. Curabitur et lorem vehicula, posuere risus sit amet, tincidunt enim. Donec nibh libero, ultricies eget ornare et, tempor ac mi.
