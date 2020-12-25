@@ -11,6 +11,7 @@ namespace Leadvertex\Plugin\Instance\Macros\Forms;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\BooleanDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\FileDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\FloatDefinition;
+use Leadvertex\Plugin\Components\Form\FieldDefinitions\IFrameDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Limit;
 use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\DynamicValues;
@@ -361,6 +362,18 @@ class SettingsForm extends Form
                 $staticValues,
                 new Limit(1, 1),
                 $withDefault ? ['static_3'] : null
+            ),
+            'iframe_field' => new IFrameDefinition(
+                Translator::get('settings', 'IFRAME_TITLE'),
+                Translator::get('settings', 'IFRAME_DESCRIPTION'),
+                function ($value) {
+                    if ($value < 0 || $value > 10) {
+                        $errors[] = Translator::get('settings', 'INTEGER_VALIDATION_ERROR');
+                    }
+                    return [];
+                },
+                'iframe/example.html',
+                $withDefault ? '5' : null
             ),
         ];
     }

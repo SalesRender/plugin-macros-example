@@ -1,14 +1,4 @@
 {
-    "info": [
-        {
-            "source": "PLUGIN_NAME",
-            "translated": "Demonstration plugin"
-        },
-        {
-            "source": "PLUGIN_DESCRIPTION",
-            "translated": "This plugin developed **for frontend testing**."
-        }
-    ],
     "autocomplete": [
         {
             "source": "DYNAMIC_VALUE #{value}0",
@@ -421,10 +411,6 @@
             "translated": "Process description"
         },
         {
-            "source": "SET_PROCESS_DESCRIPTION_ERROR",
-            "translated": "Process description should be a string"
-        },
-        {
             "source": "SET_ERRORS_COUNT_FIELD_TITLE",
             "translated": "Errors"
         },
@@ -731,6 +717,14 @@
         {
             "source": "LIST_OF_ENUM_DESCRIPTION",
             "translated": "Field, that accepts a set of values"
+        },
+        {
+            "source": "IFRAME_TITLE",
+            "translated": "Iframe"
+        },
+        {
+            "source": "IFRAME_DESCRIPTION",
+            "translated": "Select value from 1 to 10"
         }
     ],
     "errors": [

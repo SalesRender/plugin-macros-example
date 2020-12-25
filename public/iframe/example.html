@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Example range input</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let urlParams = new URLSearchParams(window.location.search);
+
+            let group = urlParams.get('group');
+            let field = urlParams.get('field');
+            let value = urlParams.get('value');
+
+            if (value === null) {
+                value = 0;
+            }
+
+            let input = document.getElementById("range");
+            let current = document.getElementById("current");
+
+            input.value = value;
+            current.innerText = value;
+
+            input.onchange = function () {
+                current.innerText = input.value;
+                let event = {
+                    "lv": "iframe",
+                    "group": group,
+                    "field": field,
+                    "value": input.value
+                };
+
+                console.log(event);
+                parent.postMessage(JSON.stringify(event), '*')
+            };
+        });
+    </script>
+</head>
+<body class="text-center">
+
+<main>
+    <label for="range" class="form-label">Current value: <span id="current">0</span></label>
+    <input type="range" class="form-range" id="range" min="0" max="10" value="0">
+</main>
+
+</body>
+</html>

@@ -1,14 +1,4 @@
 {
-    "info": [
-        {
-            "source": "PLUGIN_NAME",
-            "translated": "Демонстрационный плагин"
-        },
-        {
-            "source": "PLUGIN_DESCRIPTION",
-            "translated": "Данный плагин разработан **для тестирования frontend'a**"
-        }
-    ],
     "autocomplete": [
         {
             "source": "DYNAMIC_VALUE #{value}0",
@@ -421,10 +411,6 @@
             "translated": "Описание процесса"
         },
         {
-            "source": "SET_PROCESS_DESCRIPTION_ERROR",
-            "translated": "Описание процесса должно быть строкой"
-        },
-        {
             "source": "SET_ERRORS_COUNT_FIELD_TITLE",
             "translated": "Ошибки"
         },
@@ -731,6 +717,14 @@
         {
             "source": "LIST_OF_ENUM_DESCRIPTION",
             "translated": "Поле, которое принимает набор значений"
+        },
+        {
+            "source": "IFRAME_TITLE",
+            "translated": "IFrame"
+        },
+        {
+            "source": "IFRAME_DESCRIPTION",
+            "translated": "Выберите значение от 1 до 10"
         }
     ],
     "errors": [
