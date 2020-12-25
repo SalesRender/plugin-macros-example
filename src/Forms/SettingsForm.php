@@ -375,6 +375,18 @@ class SettingsForm extends Form
                 'iframe/example.html',
                 $withDefault ? '5' : null
             ),
+            'iframe_field_second' => new IFrameDefinition(
+                Translator::get('settings', 'IFRAME_TITLE'),
+                Translator::get('settings', 'IFRAME_DESCRIPTION'),
+                function ($value) {
+                    if ($value < 0 || $value > 10) {
+                        $errors[] = Translator::get('settings', 'INTEGER_VALIDATION_ERROR');
+                    }
+                    return [];
+                },
+                'iframe/example.html',
+                $withDefault ? '1' : null
+            ),
         ];
     }
 
