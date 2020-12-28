@@ -8,7 +8,7 @@
 namespace Leadvertex\Plugin\Instance\Macros\Autocomplete;
 
 
-use Leadvertex\Plugin\Components\Form\Components\AutocompleteInterface;
+use Leadvertex\Plugin\Components\Form\Autocomplete\AutocompleteInterface;
 use Leadvertex\Plugin\Components\Translations\Translator;
 
 class Example implements AutocompleteInterface
