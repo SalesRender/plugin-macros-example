@@ -209,7 +209,7 @@ class SettingsForm extends Form
                 function ($value) {
                     $errors = [];
 
-                    if (!is_scalar($value)) {
+                    if (!is_scalar($value) && !is_null($value)) {
                         $errors[] = Translator::get('settings', 'PASSWORD_VALIDATION_NOT_STRING');
                     }
 
