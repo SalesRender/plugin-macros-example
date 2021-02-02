@@ -25,7 +25,12 @@ class PreviewOptionsForm extends Form
 
     public function __construct()
     {
-        Settings::guardIntegrity();
+        $settings = Settings::find();
+        $defaultFormat = $settings->getData()->get('group_1.fields');
+
+        if (is_null($defaultFormat)) {
+            $settings::guardIntegrity();
+        }
 
         $this->batch = Batch::findById(GraphqlInputToken::getInstance()->getId());
         $this->fields = Settings::find()->getData()->get('group_1.fields');
