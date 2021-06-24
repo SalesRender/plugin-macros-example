@@ -98,7 +98,7 @@ class PreviewOptionsForm extends Form
     {
         $fields = ArrayGraphQL::convert(Columns::getQueryColumns($this->fields));
         return '
-            query($pagination: Pagination!, $filters: OrderFilter, $sort: OrderSort) {
+            query($pagination: Pagination!, $filters: OrderSearchFilter, $sort: OrderSort) {
                 ordersFetcher(pagination: $pagination, filters: $filters, sort: $sort) ' . $fields . '
             }
         ';
