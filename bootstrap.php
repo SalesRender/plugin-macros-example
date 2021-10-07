@@ -34,7 +34,7 @@ Connector::config(new Medoo([
 Translator::config('ru_RU');
 
 # 3. Set permitted file extensions (* for any ext) and max sizes (in bytes). Pass empty array for disable file uploading
-UploadersContainer::config(new LocalUploadAction([
+UploadersContainer::addDefaultUploader(new LocalUploadAction([
     'jpg' => 1 * 1024 * 1024,       //Max 1 MB for *.jpg file
     'png' => 2 * 1024 * 1024,       //Max 2 MB for *.jpg file
     'zip' => 10 * 1024 * 1024, //Max 10 MB for *.zip archive
