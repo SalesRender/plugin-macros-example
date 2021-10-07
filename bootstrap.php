@@ -11,7 +11,8 @@ use Leadvertex\Plugin\Components\Purpose\PluginEntity;
 use Leadvertex\Plugin\Components\Purpose\PluginPurpose;
 use Leadvertex\Plugin\Components\Settings\Settings;
 use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Core\Actions\UploadAction;
+use Leadvertex\Plugin\Core\Actions\Upload\LocalUploadAction;
+use Leadvertex\Plugin\Core\Actions\Upload\UploadersContainer;
 use Leadvertex\Plugin\Instance\Macros\Autocomplete\Example;
 use Leadvertex\Plugin\Instance\Macros\Components\ExampleHandler;
 use Leadvertex\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
@@ -33,12 +34,12 @@ Connector::config(new Medoo([
 Translator::config('ru_RU');
 
 # 3. Set permitted file extensions (* for any ext) and max sizes (in bytes). Pass empty array for disable file uploading
-UploadAction::config([
+UploadersContainer::config(new LocalUploadAction([
     'jpg' => 1 * 1024 * 1024,       //Max 1 MB for *.jpg file
     'png' => 2 * 1024 * 1024,       //Max 2 MB for *.jpg file
     'zip' => 10 * 1024 * 1024, //Max 10 MB for *.zip archive
     'rar' => 10 * 1024 * 1024, //Max 10 MB for *.rar archive
-]);
+]));
 
 # 4. Configure info about plugin
 Info::config(

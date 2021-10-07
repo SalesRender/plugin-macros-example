@@ -20,7 +20,7 @@
     "ext-curl": "*",
     "ext-json": "*",
     "xakepehok/array-graphql": "^0.0.1",
-    "leadvertex/plugin-core-macros": "^0.16.0",
+    "leadvertex/plugin-core-macros": "^0.18.0",
     "leadvertex/plugin-component-purpose": "^1.3"
   }
 }
