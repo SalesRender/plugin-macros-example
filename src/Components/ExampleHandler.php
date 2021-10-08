@@ -23,8 +23,6 @@ class ExampleHandler implements BatchHandlerInterface
 
     public function __invoke(Process $process, Batch $batch)
     {
-        $iterator = new OrdersFetcherIterator($process, $batch->getApiClient(), $batch->getFsp());
-
         Settings::guardIntegrity();
         $fields = Settings::find()->getData()->get('group_1.fields');
 
@@ -34,25 +32,25 @@ class ExampleHandler implements BatchHandlerInterface
         self::$errors = $batch->getOptions(1)->get('response_options.errors');
         self::$response = $batch->getOptions(1)->get('response_options.response');
 
-        $iterator->iterator(
-            Columns::getQueryColumns($fields),
-            function ($field, Process $process) use ($delay) {
-                if (self::$isNullCount) {
-                    $process->initialize(null);
-                }
-                if (self::$skipped !== 0) {
-                    $process->skip();
-                    self::$skipped--;
-                } elseif (self::$errors !== 0) {
-                    $process->addError(new Error('Test error', $field['id']));
-                    self::$errors--;
-                } else {
-                    $process->handle();
-                }
-                $process->save();
-                sleep($delay);
+        $iterator = new OrdersFetcherIterator(Columns::getQueryColumns($fields), $batch->getApiClient(), $batch->getFsp());
+        $process->initialize(count($iterator));
+
+        foreach ($iterator as $field) {
+            if (self::$isNullCount) {
+                $process->initialize(null);
             }
-        );
+            if (self::$skipped !== 0) {
+                $process->skip();
+                self::$skipped--;
+            } elseif (self::$errors !== 0) {
+                $process->addError(new Error('Test error', $field['id']));
+                self::$errors--;
+            } else {
+                $process->handle();
+            }
+            $process->save();
+            sleep($delay);
+        }
 
         $process->setState(Process::STATE_POST_PROCESSING);
         $process->save();
