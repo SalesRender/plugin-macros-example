@@ -9,8 +9,8 @@ namespace Leadvertex\Plugin\Instance\Macros\Components;
 
 use Leadvertex\Plugin\Components\Batch\Batch;
 use Leadvertex\Plugin\Components\Batch\BatchHandlerInterface;
-use Leadvertex\Plugin\Components\Process\Components\Error;
-use Leadvertex\Plugin\Components\Process\Process;
+use Leadvertex\Plugin\Components\Batch\Process\Components\Error;
+use Leadvertex\Plugin\Components\Batch\Process\Process;
 use Leadvertex\Plugin\Components\Settings\Settings;
 
 class ExampleHandler implements BatchHandlerInterface
