@@ -150,7 +150,7 @@ class Columns
     {
         $query = <<<QUERY
 query {
-  fieldsFetcher {
+  orderFieldsFetcher {
     fields {
       name
       label
@@ -164,7 +164,7 @@ QUERY;
         $response = $this->client->query($query, [])->getData();
 
         $groups = [];
-        foreach ($response['fieldsFetcher']['fields'] as $fieldData) {
+        foreach ($response['orderFieldsFetcher']['fields'] as $fieldData) {
             $name = $fieldData['name'];
             $label = $fieldData['label'];
             $typename = lcfirst($fieldData['__typename'] . 's');
