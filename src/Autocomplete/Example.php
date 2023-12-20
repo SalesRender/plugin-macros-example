@@ -5,11 +5,11 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Instance\Macros\Autocomplete;
+namespace SalesRender\Plugin\Instance\Macros\Autocomplete;
 
 
-use Leadvertex\Plugin\Components\Form\Autocomplete\AutocompleteInterface;
-use Leadvertex\Plugin\Components\Translations\Translator;
+use SalesRender\Plugin\Components\Form\Autocomplete\AutocompleteInterface;
+use SalesRender\Plugin\Components\Translations\Translator;
 
 class Example implements AutocompleteInterface
 {

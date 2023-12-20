@@ -5,25 +5,25 @@
  * @author Timur Kasumov aka XAKEPEHOK
  */
 
-namespace Leadvertex\Plugin\Instance\Macros\Forms;
+namespace SalesRender\Plugin\Instance\Macros\Forms;
 
 
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\BooleanDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\FileDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\FloatDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\IFrameDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Limit;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\DynamicValues;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\StaticValues;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\MarkdownDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
-use Leadvertex\Plugin\Components\Form\FieldDefinitions\StringDefinition;
-use Leadvertex\Plugin\Components\Form\FieldGroup;
-use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Instance\Macros\Components\Columns;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\BooleanDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\FileDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\FloatDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\IFrameDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\IntegerDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Limit;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\DynamicValues;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\StaticValues;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\MarkdownDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\StringDefinition;
+use SalesRender\Plugin\Components\Form\FieldGroup;
+use SalesRender\Plugin\Components\Form\Form;
+use SalesRender\Plugin\Components\Translations\Translator;
+use SalesRender\Plugin\Instance\Macros\Components\Columns;
 use XAKEPEHOK\Path\Path;
 
 class SettingsForm extends Form

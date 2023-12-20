@@ -1,17 +1,17 @@
 <?php
 
-namespace Leadvertex\Plugin\Instance\Macros\Forms;
+namespace SalesRender\Plugin\Instance\Macros\Forms;
 
 
 use Adbar\Dot;
-use Leadvertex\Plugin\Components\Access\Token\GraphqlInputToken;
-use Leadvertex\Plugin\Components\Batch\Batch;
-use Leadvertex\Plugin\Components\Db\Model;
-use Leadvertex\Plugin\Components\Form\FieldGroup;
-use Leadvertex\Plugin\Components\Form\Form;
-use Leadvertex\Plugin\Components\Settings\Settings;
-use Leadvertex\Plugin\Components\Translations\Translator;
-use Leadvertex\Plugin\Instance\Macros\Components\Columns;
+use SalesRender\Plugin\Components\Access\Token\GraphqlInputToken;
+use SalesRender\Plugin\Components\Batch\Batch;
+use SalesRender\Plugin\Components\Db\Model;
+use SalesRender\Plugin\Components\Form\FieldGroup;
+use SalesRender\Plugin\Components\Form\Form;
+use SalesRender\Plugin\Components\Settings\Settings;
+use SalesRender\Plugin\Components\Translations\Translator;
+use SalesRender\Plugin\Instance\Macros\Components\Columns;
 use XAKEPEHOK\ArrayGraphQL\ArrayGraphQL;
 
 class PreviewOptionsForm extends Form

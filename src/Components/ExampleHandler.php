@@ -5,13 +5,13 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Instance\Macros\Components;
+namespace SalesRender\Plugin\Instance\Macros\Components;
 
-use Leadvertex\Plugin\Components\Batch\Batch;
-use Leadvertex\Plugin\Components\Batch\BatchHandlerInterface;
-use Leadvertex\Plugin\Components\Batch\Process\Error;
-use Leadvertex\Plugin\Components\Batch\Process\Process;
-use Leadvertex\Plugin\Components\Settings\Settings;
+use SalesRender\Plugin\Components\Batch\Batch;
+use SalesRender\Plugin\Components\Batch\BatchHandlerInterface;
+use SalesRender\Plugin\Components\Batch\Process\Error;
+use SalesRender\Plugin\Components\Batch\Process\Process;
+use SalesRender\Plugin\Components\Settings\Settings;
 
 class ExampleHandler implements BatchHandlerInterface
 {

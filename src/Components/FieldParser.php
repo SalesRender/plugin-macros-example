@@ -5,7 +5,7 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Plugin\Instance\Macros\Components;
+namespace SalesRender\Plugin\Instance\Macros\Components;
 
 
 use InvalidArgumentException;

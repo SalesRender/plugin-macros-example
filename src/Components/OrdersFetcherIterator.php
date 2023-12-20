@@ -5,10 +5,10 @@
  * @author Timur Kasumov aka XAKEPEHOK
  */
 
-namespace Leadvertex\Plugin\Instance\Macros\Components;
+namespace SalesRender\Plugin\Instance\Macros\Components;
 
 
-use Leadvertex\Plugin\Components\ApiClient\ApiFetcherIterator;
+use SalesRender\Plugin\Components\ApiClient\ApiFetcherIterator;
 use XAKEPEHOK\ArrayGraphQL\ArrayGraphQL;
 use XAKEPEHOK\ArrayGraphQL\InvalidArrayException;
 
