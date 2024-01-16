@@ -725,6 +725,14 @@
         {
             "source": "IFRAME_DESCRIPTION",
             "translated": "Select value from 1 to 10"
+        },
+        {
+            "source": "TABLE_PREVIEW_TITLE",
+            "translated": "Table preview"
+        },
+        {
+            "source": "TABLE_PREVIEW_DESCRIPTION",
+            "translated": "Information field"
         }
     ],
     "errors": [

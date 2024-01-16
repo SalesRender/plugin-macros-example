@@ -20,6 +20,7 @@ use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\MarkdownDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\StringDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\TablePreviewField;
 use SalesRender\Plugin\Components\Form\FieldGroup;
 use SalesRender\Plugin\Components\Form\Form;
 use SalesRender\Plugin\Components\Translations\Translator;
@@ -385,8 +386,15 @@ class SettingsForm extends Form
                     return [];
                 },
                 'iframe/example.html',
-                $withDefault ? '1' : null
+                $withDefault ? '1' : null,
             ),
+            'tablePreview' => new TablePreviewField(
+                Translator::get('settings', 'TABLE_PREVIEW_TITLE'),
+                Translator::get('settings', 'TABLE_PREVIEW_DESCRIPTION'),
+                'excel',
+                'default text',
+                'context?'
+            )
         ];
     }
 

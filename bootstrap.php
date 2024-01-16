@@ -6,7 +6,7 @@ use SalesRender\Plugin\Components\Form\Autocomplete\AutocompleteRegistry;
 use SalesRender\Plugin\Components\Info\Developer;
 use SalesRender\Plugin\Components\Info\Info;
 use SalesRender\Plugin\Components\Info\PluginType;
-use SalesRender\Plugin\Components\Purpose\PluginClass;
+use SalesRender\Plugin\Components\Purpose\MacrosPluginClass;
 use SalesRender\Plugin\Components\Purpose\PluginEntity;
 use SalesRender\Plugin\Components\Purpose\PluginPurpose;
 use SalesRender\Plugin\Components\Settings\Settings;
@@ -47,7 +47,7 @@ Info::config(
     fn() => Translator::get('info', 'PLUGIN_NAME'),
     fn() => Translator::get('info', 'PLUGIN_DESCRIPTION') . "\n" . file_get_contents(Path::root()->down('markdown.md')),
     new PluginPurpose(
-        new PluginClass(PluginClass::CLASS_HANDLER),
+        new MacrosPluginClass(MacrosPluginClass::CLASS_HANDLER),
         new PluginEntity(PluginEntity::ENTITY_ORDER)
     ),
     new Developer(

@@ -725,6 +725,14 @@
         {
             "source": "IFRAME_DESCRIPTION",
             "translated": "Выберите значение от 1 до 10"
+        },
+        {
+            "source": "TABLE_PREVIEW_TITLE",
+            "translated": "Table preview"
+        },
+        {
+            "source": "TABLE_PREVIEW_DESCRIPTION",
+            "translated": "Информационное поле"
         }
     ],
     "errors": [
