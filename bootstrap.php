@@ -3,6 +3,7 @@
 use SalesRender\Plugin\Components\Batch\BatchContainer;
 use SalesRender\Plugin\Components\Db\Components\Connector;
 use SalesRender\Plugin\Components\Form\Autocomplete\AutocompleteRegistry;
+use SalesRender\Plugin\Components\Form\TableView\TablePreviewRegistry;
 use SalesRender\Plugin\Components\Info\Developer;
 use SalesRender\Plugin\Components\Info\Info;
 use SalesRender\Plugin\Components\Info\PluginType;
@@ -14,12 +15,15 @@ use SalesRender\Plugin\Components\Translations\Translator;
 use SalesRender\Plugin\Core\Actions\Upload\LocalUploadAction;
 use SalesRender\Plugin\Core\Actions\Upload\UploadersContainer;
 use SalesRender\Plugin\Instance\Macros\Autocomplete\Example;
+use SalesRender\Plugin\Instance\Macros\Autocomplete\ExampleWithDeps;
 use SalesRender\Plugin\Instance\Macros\Components\ExampleHandler;
 use SalesRender\Plugin\Instance\Macros\Forms\PreviewOptionsForm;
 use SalesRender\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use SalesRender\Plugin\Instance\Macros\Forms\SecondResponseOptionsForm;
 use SalesRender\Plugin\Instance\Macros\Forms\SettingsForm;
 use Medoo\Medoo;
+use SalesRender\Plugin\Instance\Macros\TablePreviewAction\TablePreviewExample;
+use SalesRender\Plugin\Instance\Macros\TablePreviewAction\TablePreviewExcel;
 use XAKEPEHOK\Path\Path;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -58,12 +62,13 @@ Info::config(
 );
 
 # 5. Configure settings form
-Settings::setForm(fn() => new SettingsForm());
+Settings::setForm(fn($context) => new SettingsForm($context));
 
 # 6. Configure form autocompletes
 AutocompleteRegistry::config(function (string $name) {
     switch ($name) {
         case 'example': return new Example();
+        case 'exampleWithDeps': return new ExampleWithDeps();
         default: return null;
     }
 });
@@ -79,4 +84,14 @@ BatchContainer::config(
         }
     },
     new ExampleHandler()
+);
+
+TablePreviewRegistry::config(
+    function (string $name) {
+        switch ($name) {
+            case 'example': return new TablePreviewExample();
+            case 'excel': return new TablePreviewExcel();
+            default: return null;
+        }
+    }
 );

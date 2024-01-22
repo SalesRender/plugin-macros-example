@@ -9,6 +9,10 @@
             "translated": "Dynamic value #{value}"
         },
         {
+            "source": "DYNAMIC_VALUE_WITH_DEP #{value}",
+            "translated": "Dynamic value with deps #{value}"
+        },
+        {
             "source": "GROUP_FROM_TO ({min}-{max})",
             "translated": "From {min} to {max}"
         },
@@ -609,6 +613,14 @@
         {
             "source": "BOOL_DESCRIPTION",
             "translated": "Field, that accepts a 'bool' value"
+        },
+        {
+            "source": "BOOL_TITLE_ALL",
+            "translated": "Доступность всех полей"
+        },
+        {
+            "source": "BOOL_DESCRIPTION_ALL",
+            "translated": "Поле, которое может отключить все остальные поля"
         },
         {
             "source": "BOOL_VALIDATION_ERROR",

@@ -14,7 +14,7 @@ use SalesRender\Plugin\Components\Translations\Translator;
 class Example implements AutocompleteInterface
 {
 
-    public function query(?string $query): array
+    public function query(?string $query, array $dependencies, array $context): array
     {
         if (trim($query) === '') {
             $query = 1;
@@ -39,7 +39,7 @@ class Example implements AutocompleteInterface
         return $values;
     }
 
-    public function values(array $values): array
+    public function values(array $values, array $dependencies, array $context): array
     {
         $result = [];
 
@@ -57,7 +57,7 @@ class Example implements AutocompleteInterface
         return $result;
     }
 
-    public function validate(array $values): bool
+    public function validate(array $values, array $dependencies, array $context): bool
     {
         foreach ($values as $value) {
             if (!preg_match('~^dynamic_\d+$~', $value)) {
@@ -67,7 +67,7 @@ class Example implements AutocompleteInterface
         return true;
     }
 
-    private function getGroup($value)
+    private function getGroup($value): string
     {
         $matches = [];
         if (preg_match('~(\d+)~', $value, $matches)) {

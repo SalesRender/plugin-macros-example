@@ -30,8 +30,9 @@ use XAKEPEHOK\Path\Path;
 class SettingsForm extends Form
 {
 
-    public function __construct()
+    public function __construct(array $context)
     {
+        $this->setContext($context);
         parent::__construct(
             Translator::get(
                 'settings',
@@ -45,12 +46,40 @@ class SettingsForm extends Form
                 'group_1' => new FieldGroup(
                     Translator::get('settings', 'GROUP_1'),
                     Translator::get('settings', 'GROUP_1_DESCRIPTION'),
-                    $this->getFieldsArray()
+                    $this->getFieldsArray(),
+                    [
+                        "tablePreview_example" => ["iframe_field", "iframe_field_second"],
+                        "float_field" => ["bool_field"],
+                        "integer_field" => ["bool_field", "float_field"],
+                        "listOfEnum_field" => ["bool_field", "iframe_field_second"],
+                    ],
+                    $this->getContext()
                 ),
                 'group_2' => new FieldGroup(
                     Translator::get('settings', 'GROUP_2'),
                     null,
-                    array_reverse($this->getFieldsArray(false))
+                    array_reverse($this->getFieldsArray(false)),
+                    [
+                        "fields" => ["bool_field_all"],
+                        "bool_field" => ["bool_field_all"],
+                        "float_field" => ["bool_field_all"],
+                        "integer_field" => ["bool_field_all"],
+                        "password_field" => ["bool_field_all"],
+                        "string_field" => ["bool_field_all"],
+                        "markdown_field" => ["bool_field_all"],
+                        "file_field" => ["bool_field_all"],
+                        "listOfEnum_field_dynamic" => ["bool_field_all"],
+                        "listOfEnum_field_static" => ["bool_field_all"],
+                        "listOfEnum_field_static_min_only" => ["bool_field_all"],
+                        "listOfEnum_field_static_max_only" => ["bool_field_all"],
+                        "listOfEnum_field_static_min_and_max" => ["bool_field_all"],
+                        "listOfEnum_field_static_one" => ["bool_field_all"],
+                        "iframe_field" => ["bool_field_all"],
+                        "iframe_field_second" => ["bool_field_all"],
+                        "tablePreview_example" => ["bool_field_all"],
+                        "tablePreview_excel" => ["bool_field_all"],
+                        "listOfEnum_field" => ["bool_field_all"],
+                    ],
                 ),
                 'group_3' => new FieldGroup(
                     Translator::get('settings', 'GROUP_3'),
@@ -68,6 +97,7 @@ class SettingsForm extends Form
     protected function getFieldsArray($withDefault = true): array
     {
         $columns = new Columns();
+        $context = $this->getContext();
         $values = [];
         for ($i = 1; $i <= 10; $i++) {
             $values["static_{$i}"] = [
@@ -123,7 +153,7 @@ class SettingsForm extends Form
             return $errors;
         };
 
-        return [
+        $result = [
             'fields' => new ListOfEnumDefinition(
                 Translator::get(
                     'settings',
@@ -388,14 +418,81 @@ class SettingsForm extends Form
                 'iframe/example.html',
                 $withDefault ? '1' : null,
             ),
-            'tablePreview' => new TablePreviewField(
+            'tablePreview_example' => new TablePreviewField(
+                Translator::get('settings', 'TABLE_PREVIEW_TITLE'),
+                Translator::get('settings', 'TABLE_PREVIEW_DESCRIPTION'),
+                'example',
+                ['default' => 'text'],
+                $this->getContext()
+            ),
+            'tablePreview_excel' => new TablePreviewField(
                 Translator::get('settings', 'TABLE_PREVIEW_TITLE'),
                 Translator::get('settings', 'TABLE_PREVIEW_DESCRIPTION'),
                 'excel',
-                'default text',
-                'context?'
-            )
+                ['value'],
+                $this->getContext()
+            ),
+            'listOfEnum_field' => new ListOfEnumDefinition(
+                Translator::get('settings', 'LIST_OF_ENUM_TITLE'),
+                Translator::get('settings', 'LIST_OF_ENUM_DESCRIPTION'),
+                function ($values) use ($context) {
+                    $errors = [];
+
+                    if (!is_null($values) && !is_array($values)) {
+                        $errors[] = Translator::get('settings', 'LIST_OF_ENUM_VALIDATION_INVALID_ARGUMENT');
+                        return $errors;
+                    }
+
+                    if (is_null($values)) {
+                        $values = [];
+                    }
+
+                    foreach ($values as $value) {
+                        if (!preg_match('~^dynamic_with_dep_\d+$~', $value) || !in_array($value, $context)) {
+                            $errors[] = Translator::get('settings', "LIST_OF_ENUM_VALIDATION_ERROR {value} " . json_encode($context) . json_encode($this->getContext()), ['value' => $value]);
+                        }
+                    }
+                    return $errors;
+                },
+                new DynamicValues('exampleWithDeps'),
+                new Limit(1, 1),
+                $withDefault ? ['dynamic_with_dep_1'] : null,
+                $context
+            ),
+            'bool_field_all' => new BooleanDefinition(
+                Translator::get('settings', 'BOOL_TITLE_ALL'),
+                Translator::get('settings', 'BOOL_DESCRIPTION_ALL'),
+                function ($value) {
+                    $errors = [];
+                    if (!is_bool($value)) {
+                        $errors[] = Translator::get('settings', 'BOOL_VALIDATION_ERROR');
+                    }
+                    if (is_null($value)) {
+                        $errors[] = Translator::get('settings', 'NULL_ERROR');
+                    }
+                    return $errors;
+                },
+                $withDefault ? true : null
+            ),
         ];
+        foreach ($context as $value) {
+            $result[$value] = new BooleanDefinition(
+                $value,
+                $value,
+                function ($value) {
+                    $errors = [];
+                    if (!is_bool($value)) {
+                        $errors[] = Translator::get('settings', 'BOOL_VALIDATION_ERROR');
+                    }
+                    if (is_null($value)) {
+                        $errors[] = Translator::get('settings', 'NULL_ERROR');
+                    }
+                    return $errors;
+                },
+                $withDefault ? true : null
+            );
+        }
+        return $result;
     }
 
 }
