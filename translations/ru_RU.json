@@ -745,6 +745,14 @@
         {
             "source": "TABLE_PREVIEW_DESCRIPTION",
             "translated": "Информационное поле"
+        },
+        {
+            "source": "MARKDOWN_PREVIEW_TITLE",
+            "translated": "Markdown preview"
+        },
+        {
+            "source": "MARKDOWN_PREVIEW_DESCRIPTION",
+            "translated": "Информационное поле markdown"
         }
     ],
     "errors": [

@@ -10,13 +10,13 @@ class TablePreviewExample implements TablePreviewInterface
 
     public function render(array $dependencies, array $context): array
     {
-        $result = [];
+        $result = [['key', 'dep', 'sum']];
         $sum = 0;
         foreach ($dependencies as $key => $dependency) {
             $sum += $dependency;
-            $result['dep ' . ($key + 1)] = $dependency;
+            $result[] = ['dep ' . ($key + 1), $dependency, $sum];
         }
 
-        return array_merge_recursive($result, ['dep sum' => $sum],  $context);
+        return $result;
     }
 }

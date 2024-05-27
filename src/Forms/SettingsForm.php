@@ -18,6 +18,7 @@ use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\Dynami
 use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnum\Values\StaticValues;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\ListOfEnumDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\MarkdownDefinition;
+use SalesRender\Plugin\Components\Form\FieldDefinitions\MarkdownPreviewField;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\PasswordDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\StringDefinition;
 use SalesRender\Plugin\Components\Form\FieldDefinitions\TablePreviewField;
@@ -417,6 +418,13 @@ class SettingsForm extends Form
                 },
                 'iframe/example.html',
                 $withDefault ? '1' : null,
+            ),
+            'markdownPreview_example' => new markdownPreviewField(
+                Translator::get('settings', 'MARKDOWN_PREVIEW_TITLE'),
+                Translator::get('settings', 'MARKDOWN_PREVIEW_DESCRIPTION'),
+                'markdown_example',
+                ['markdown' => 'text'],
+                $this->getContext()
             ),
             'tablePreview_example' => new TablePreviewField(
                 Translator::get('settings', 'TABLE_PREVIEW_TITLE'),

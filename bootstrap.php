@@ -3,6 +3,7 @@
 use SalesRender\Plugin\Components\Batch\BatchContainer;
 use SalesRender\Plugin\Components\Db\Components\Connector;
 use SalesRender\Plugin\Components\Form\Autocomplete\AutocompleteRegistry;
+use SalesRender\Plugin\Components\Form\MarkdownPreview\MarkdownPreviewRegistry;
 use SalesRender\Plugin\Components\Form\TableView\TablePreviewRegistry;
 use SalesRender\Plugin\Components\Info\Developer;
 use SalesRender\Plugin\Components\Info\Info;
@@ -22,6 +23,7 @@ use SalesRender\Plugin\Instance\Macros\Forms\ResponseOptionsForm;
 use SalesRender\Plugin\Instance\Macros\Forms\SecondResponseOptionsForm;
 use SalesRender\Plugin\Instance\Macros\Forms\SettingsForm;
 use Medoo\Medoo;
+use SalesRender\Plugin\Instance\Macros\MarkdownPreviewAction\MarkdownPreviewExample;
 use SalesRender\Plugin\Instance\Macros\TablePreviewAction\TablePreviewExample;
 use SalesRender\Plugin\Instance\Macros\TablePreviewAction\TablePreviewExcel;
 use XAKEPEHOK\Path\Path;
@@ -91,6 +93,15 @@ TablePreviewRegistry::config(
         switch ($name) {
             case 'example': return new TablePreviewExample();
             case 'excel': return new TablePreviewExcel();
+            default: return null;
+        }
+    }
+);
+
+MarkdownPreviewRegistry::config(
+    function (string $name) {
+        switch ($name) {
+            case 'markdown_example': return new MarkdownPreviewExample();
             default: return null;
         }
     }
